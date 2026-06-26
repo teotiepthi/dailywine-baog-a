@@ -18,7 +18,7 @@ header{background:var(--w);padding:0 20px;display:flex;align-items:center;justif
 .p{padding:4px 12px;border-radius:20px;font-size:12px;cursor:pointer;border:1px solid var(--b);background:#fff;color:var(--m);white-space:nowrap}
 .p.a{background:var(--w);color:#fff;border-color:var(--w)}
 .gd{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:10px}
-.cd{background:#fff;border:1px solid var(--b);border-radius:10px;padding:12px;cursor:pointer;transition:.15s}
+.cd{background:#fff;border:1px solid var(--b);border-radius:10px;padding:12px;cursor:pointer;transition:.15s;position:relative}
 .cd:hover{border-color:var(--w);transform:translateY(-1px);box-shadow:0 2px 8px rgba(139,26,44,.1)}
 .cd.sel{border:2px solid var(--w)}
 .ci{width:100%;height:130px;background:linear-gradient(135deg,#fdf2f4,#fdf8f9);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:9px;overflow:hidden;position:relative}
@@ -27,16 +27,20 @@ header{background:var(--w);padding:0 20px;display:flex;align-items:center;justif
 .fb svg{width:32px;height:32px;fill:rgba(139,26,44,.15)}
 .fb span{font-size:9px;color:#bbb}
 .cbg{position:absolute;top:6px;right:6px;font-size:10px;padding:1px 6px;border-radius:8px;background:rgba(139,26,44,.08);color:var(--w);font-weight:600;z-index:2}
+/* NÚT CẬP NHẬT ẢNH */
+.img-btn{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:9px;padding:2px 8px;border-radius:8px;background:rgba(0,0,0,.5);color:#fff;border:none;cursor:pointer;white-space:nowrap;z-index:3;opacity:0;transition:opacity .2s}
+.ci:hover .img-btn{opacity:1}
 .cn{font-size:11px;font-weight:600;margin-bottom:3px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px}
 .cg{font-size:10px;color:var(--m);margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ca{font-size:10px;color:#9ca3af}
 .cpr{margin-top:7px;padding-top:7px;border-top:1px solid var(--b);font-size:11px;font-weight:600;color:var(--w)}
-.cps{font-size:10px;color:#16a34a;font-weight:600}
 .dt{background:#fff;border:1px solid var(--b);border-radius:10px;padding:18px;margin-top:14px;display:none}
 .dt.sh{display:block}
 .dtp{display:flex;gap:16px;flex-wrap:wrap}
-.dim{width:160px;min-width:160px;height:220px;background:linear-gradient(135deg,#fdf2f4,#fdf8f9);border-radius:8px;overflow:hidden;border:1px solid var(--b);display:flex;align-items:center;justify-content:center}
+.dim{width:160px;min-width:160px;height:220px;background:linear-gradient(135deg,#fdf2f4,#fdf8f9);border-radius:8px;overflow:hidden;border:1px solid var(--b);display:flex;align-items:center;justify-content:center;position:relative}
 .dim img{width:100%;height:100%;object-fit:contain}
+.dim-upd{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);color:#fff;font-size:11px;padding:6px;text-align:center;cursor:pointer;border:none;width:100%}
+.dim-upd:hover{background:rgba(139,26,44,.8)}
 .dph{display:flex;flex-direction:column;align-items:center;gap:8px;color:#ccc;font-size:11px;text-align:center;padding:10px}
 .dph svg{width:48px;height:48px;fill:rgba(139,26,44,.12)}
 .dii{flex:1;min-width:180px}
@@ -74,18 +78,52 @@ header{background:var(--w);padding:0 20px;display:flex;align-items:center;justif
 .lbtn{padding:9px 28px;background:var(--w);color:#fff;border:none;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer}
 .lerr{font-size:11px;color:#dc2626;display:none}
 .note{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 14px;font-size:11px;color:#15803d;margin-bottom:14px;line-height:1.7}
-.sec{margin-bottom:18px}
-.sec h3{font-size:13px;font-weight:600;margin-bottom:9px}
-.uz{border:2px dashed var(--b);border-radius:9px;padding:24px;text-align:center;cursor:pointer}
-.uz:hover{border-color:var(--w)}
-.uz p{font-size:12px;color:var(--m);margin-top:5px}
-.uz b{color:var(--w)}
+/* DATA TAB */
+.sec{margin-bottom:20px}
+.sec h3{font-size:14px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.guide-box{background:#fff;border:1px solid var(--b);border-radius:10px;padding:16px}
+.guide-step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.step-num{width:26px;height:26px;min-width:26px;background:var(--w);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.step-txt h4{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-txt p{font-size:12px;color:var(--m);line-height:1.6}
+.step-txt code{background:#f3f4f6;padding:1px 6px;border-radius:4px;font-size:11px;color:#374151;font-family:monospace}
+.img-upd-form{background:#fafafa;border:1px solid var(--b);border-radius:8px;padding:14px;margin-top:12px}
+.img-upd-form h4{font-size:13px;font-weight:600;margin-bottom:10px;color:var(--w)}
+.form-row{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.form-row input,.form-row select{padding:8px 10px;font-size:12px;border:1px solid var(--b);border-radius:7px;flex:1;min-width:0;background:#fff}
+.form-row input:focus,.form-row select:focus{outline:none;border-color:var(--w)}
+.upd-btn{padding:8px 18px;background:var(--w);color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer}
+.upd-btn:hover{background:#5C0F1A}
+.preview-img{margin-top:10px;display:none}
+.preview-img img{width:80px;height:100px;object-fit:contain;border-radius:6px;border:1px solid var(--b)}
+.img-list{margin-top:14px}
+.img-list h4{font-size:12px;font-weight:600;margin-bottom:8px;color:var(--m)}
+.img-item{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:7px;background:#f9fafb;margin-bottom:6px;font-size:12px}
+.img-item img{width:36px;height:44px;object-fit:contain;border-radius:4px;border:1px solid var(--b)}
+.img-item .iname{flex:1;color:var(--m);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.img-item .idel{font-size:11px;color:#dc2626;cursor:pointer;border:none;background:none;padding:2px 6px}
 .km2{background:#f9fafb;border-radius:9px;padding:14px}
 .km2 textarea{width:100%;min-height:100px;font-size:12px;padding:9px 11px;border:1px solid var(--b);border-radius:6px;background:#fff;resize:vertical;line-height:1.7;font-family:inherit;margin-bottom:9px}
 .km2s{padding:7px 20px;background:var(--w);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer}
 .ts{font-size:11px;color:#16a34a;margin-left:8px;display:none}
 .nr{text-align:center;padding:40px;color:var(--m);font-size:13px;grid-column:1/-1}
-@media(max-width:600px){.ig{grid-template-columns:1fr}.dtp{flex-direction:column}.dim{width:100%;height:180px}.tr{flex-direction:column}}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:none;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:#fff;border-radius:12px;padding:20px;width:340px;max-width:90vw}
+.modal h3{font-size:15px;font-weight:700;margin-bottom:4px}
+.modal p{font-size:12px;color:var(--m);margin-bottom:14px;line-height:1.6}
+.modal input{width:100%;padding:9px 12px;font-size:13px;border:1px solid var(--b);border-radius:7px;margin-bottom:10px}
+.modal input:focus{outline:none;border-color:var(--w)}
+.modal-preview{width:100%;height:120px;background:#f9fafb;border-radius:7px;border:1px solid var(--b);display:flex;align-items:center;justify-content:center;margin-bottom:10px;overflow:hidden}
+.modal-preview img{max-width:100%;max-height:100%;object-fit:contain}
+.modal-preview span{font-size:11px;color:#9ca3af}
+.modal-btns{display:flex;gap:8px}
+.modal-btns button{flex:1;padding:8px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none}
+.btn-cancel{background:#f3f4f6;color:var(--m)}
+.btn-save{background:var(--w);color:#fff}
+.btn-save:hover{background:#5C0F1A}
+@media(max-width:600px){.ig{grid-template-columns:1fr}.dtp{flex-direction:column}.dim{width:100%;height:180px}.tr{flex-direction:column}.form-row{flex-direction:column}}
 </style></head>
 <body>
 <header>
@@ -97,15 +135,19 @@ header{background:var(--w);padding:0 20px;display:flex;align-items:center;justif
 <button class="tb" onclick="gT('w')" id="tb-w">🏪 Bán Sỉ</button>
 <button class="tb" onclick="gT('d')" id="tb-d">⚙️ Quản Lý Dữ Liệu</button>
 </div>
+
+<!-- TAB BÁN LẺ -->
 <div id="vr" class="ct">
 <div class="tr"><input id="sr" placeholder="🔍 Tìm tên, giống nho..." oninput="rd('r')"><select id="fr" onchange="rd('r')"><option value="">Tất cả xuất xứ</option><option value="Úc">🇦🇺 Vang Úc</option><option value="Romania">🇷🇴 Vang Romania</option><option value="Pháp">🇫🇷 Vang Pháp</option><option value="Mỹ">🇺🇸 Vang Mỹ</option><option value="Ý">🇮🇹 Vang Ý</option></select></div>
 <div class="ps" id="ps-r"></div><div class="gd" id="gd-r"></div><div class="dt" id="dt-r"></div>
 </div>
+
+<!-- TAB BÁN SỈ -->
 <div id="vw" style="display:none">
 <div id="lw"><div class="ls">
 <div class="li"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
 <div class="lt">Khu vực dành cho đại lý</div>
-<div class="lb">Nhập mật khẩu để xem bảng giá sỉ. Liên hệ Daily Wine để được cấp quyền.</div>
+<div class="lb">Nhập mật khẩu để xem bảng giá sỉ.</div>
 <input type="password" id="pi" class="linp" placeholder="Mật khẩu..." onkeydown="if(event.key==='Enter')dL()">
 <div id="pe" class="lerr">❌ Sai mật khẩu.</div>
 <button class="lbtn" onclick="dL()">Xác nhận truy cập</button>
@@ -116,42 +158,154 @@ header{background:var(--w);padding:0 20px;display:flex;align-items:center;justif
 <div class="ps" id="ps-w"></div><div class="gd" id="gd-w"></div><div class="dt" id="dt-w"></div>
 </div>
 </div>
+
+<!-- TAB DATA -->
 <div id="vd" style="display:none" class="ct">
-<div class="sec"><h3>📂 Cập nhật danh mục sản phẩm</h3>
-<div class="uz" onclick="document.getElementById('fu').click()"><input type="file" id="fu" accept=".xlsx,.csv" style="display:none" onchange="hU(this)"><div style="font-size:28px">📂</div><p>Kéo thả hoặc <b>click chọn file</b></p><p style="font-size:10px;color:#9ca3af;margin-top:3px">Hỗ trợ .xlsx, .csv</p></div>
-<div id="um" style="font-size:11px;color:#16a34a;margin-top:7px;display:none"></div></div>
-<div class="sec"><h3>🎯 Cập nhật chương trình khuyến mãi</h3>
-<div class="km2"><p style="font-size:11px;color:var(--m);margin-bottom:7px">Nội dung box KM:</p><textarea id="kg"></textarea><button class="km2s" onclick="sKG()">💾 Lưu KM</button><span class="ts" id="tst">✅ Đã lưu!</span></div></div>
+
+  <div class="sec">
+    <h3>📷 Cập nhật ảnh sản phẩm</h3>
+    <div class="img-upd-form">
+      <h4>Thêm / cập nhật ảnh theo sản phẩm</h4>
+      <div class="form-row">
+        <select id="sel-prod">
+          <option value="">-- Chọn sản phẩm --</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <input id="inp-drive" placeholder="Dán link Google Drive hoặc File ID...">
+      </div>
+      <div style="font-size:11px;color:var(--m);margin-bottom:10px;line-height:1.7">
+        💡 Chấp nhận các định dạng:<br>
+        • <code style="background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:monospace">https://drive.google.com/file/d/<b>FILE_ID</b>/view</code><br>
+        • <code style="background:#f3f4f6;padding:1px 5px;border-radius:3px;font-family:monospace">https://drive.google.com/thumbnail?id=<b>FILE_ID</b></code><br>
+        • Chỉ dán <b>File ID</b> trực tiếp (chuỗi 28-33 ký tự)
+      </div>
+      <div id="preview-box" class="modal-preview" style="display:none"><span>Xem trước ảnh...</span></div>
+      <div class="form-row">
+        <button class="upd-btn" onclick="previewImg()">👁️ Xem trước</button>
+        <button class="upd-btn" style="background:#16a34a" onclick="saveImgMap()">✅ Lưu ảnh</button>
+      </div>
+      <div id="save-msg" style="font-size:11px;color:#16a34a;margin-top:6px;display:none"></div>
+    </div>
+
+    <!-- Danh sách ảnh đã lưu -->
+    <div class="img-list" id="img-list-wrap">
+      <h4>Ảnh đã cập nhật (<span id="img-count">0</span> sản phẩm)</h4>
+      <div id="img-list-body"></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3>📋 Hướng dẫn cập nhật ảnh nhanh nhất</h3>
+    <div class="guide-box">
+      <div class="guide-step">
+        <div class="step-num">1</div>
+        <div class="step-txt">
+          <h4>Mở Google Drive folder Daily Wine</h4>
+          <p>Vào thư mục ảnh sản phẩm, tìm đúng chai rượu cần cập nhật.</p>
+        </div>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">2</div>
+        <div class="step-txt">
+          <h4>Lấy link ảnh</h4>
+          <p>Click chuột phải vào file ảnh → <b>Chia sẻ</b> → <b>Sao chép liên kết</b>. Hoặc mở ảnh rồi copy URL trên thanh địa chỉ.</p>
+        </div>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">3</div>
+        <div class="step-txt">
+          <h4>Dán vào ô bên trên</h4>
+          <p>Chọn sản phẩm → dán link → nhấn <b>Xem trước</b> để kiểm tra → nhấn <b>Lưu ảnh</b>.</p>
+        </div>
+      </div>
+      <div class="guide-step" style="margin-bottom:0">
+        <div class="step-num">4</div>
+        <div class="step-txt">
+          <h4>Ảnh lưu tự động ngay trên thiết bị này</h4>
+          <p>Ảnh được lưu vào bộ nhớ trình duyệt (localStorage). Mỗi thiết bị/browser cần cập nhật riêng. Để đồng bộ nhiều máy, liên hệ kỹ thuật để embed vào code.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3>🎯 Cập nhật chương trình khuyến mãi</h3>
+    <div class="km2">
+      <p style="font-size:11px;color:var(--m);margin-bottom:7px">Nội dung hiển thị trong box KM tháng này:</p>
+      <textarea id="kg" placeholder="VD:&#10;🎁 Mua 6 chai tặng 1 chai&#10;🎉 Giảm 10% đơn từ 5 triệu&#10;📦 Free ship TP.HCM"></textarea>
+      <button class="km2s" onclick="sKG()">💾 Lưu KM</button>
+      <span class="ts" id="tst">✅ Đã lưu!</span>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h3>🔄 Xuất / Nhập dữ liệu ảnh</h3>
+    <div class="guide-box" style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="upd-btn" onclick="exportImgMap()" style="flex:1">📤 Xuất danh sách ảnh (JSON)</button>
+      <button class="upd-btn" onclick="document.getElementById('imp-file').click()" style="flex:1;background:#374151">📥 Nhập danh sách ảnh</button>
+      <input type="file" id="imp-file" accept=".json" style="display:none" onchange="importImgMap(this)">
+    </div>
+    <p style="font-size:11px;color:var(--m);margin-top:8px">💡 Xuất file JSON rồi gửi cho kỹ thuật để đồng bộ ảnh lên toàn bộ thiết bị.</p>
+  </div>
 </div>
+
+<!-- MODAL CẬP NHẬT ẢNH NHANH TỪ CARD -->
+<div class="modal-overlay" id="modal-img">
+  <div class="modal">
+    <h3>📷 Cập nhật ảnh sản phẩm</h3>
+    <p id="modal-pname" style="color:var(--w);font-weight:600;font-size:13px;margin-bottom:8px"></p>
+    <p>Dán link Google Drive hoặc File ID của ảnh sản phẩm:</p>
+    <input id="modal-inp" placeholder="https://drive.google.com/file/d/..." oninput="modalPreview()">
+    <div class="modal-preview" id="modal-prev"><span>Ảnh xem trước sẽ hiện ở đây</span></div>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">Huỷ</button>
+      <button class="btn-save" onclick="modalSave()">💾 Lưu ảnh</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const DR=id=>id?'https://drive.google.com/thumbnail?id='+id+'&sz=w400':null;
-const IM={8:'1Aw3dFMWdlBvT07XZB93Ok8M00ehYcRKK',9:'1G_s-8lK320TzNbTH1IPkUixNyrmVtJ0U',10:'1byTJauHUoPr5RbgLbhGU5zjhPXmcgrUz',11:'1OqtKlnyLpbrh5AgBbbCcNPizX_0OLfCi',14:'1--atPWj2aVQEbceBwgaGXwK7ys4xlnuN',15:'1OXx-MlMVZADFdzzuEFTJ96zAO6PdhsQ-',16:'1zPnTogE2OkKZCF9fRv7FK2PLxsN3oA8j',17:'1KLA-85k2gWY2N4DWSdCRbEI3f4RijCgy',18:'1L1kzYVBLMHSugIsEwSUOPWT-vsh7KBb1',19:'1jtaZTDCJKavvgkwE5UV2MPzS7UPJrvfK',20:'1JlgHE3n_norHxBjFtvLZ4WitcyAqLMKD',21:'1lcSU9EOVvlwf724eKiPdBB2NSZjZa9N6',22:'12uO36fLIIJwBV0XRP5OKHiBFh-CHyVOX',23:'1Unkc66BFB8ouFoMMJXtSsaVV0q0-W66h',24:'1IxoSGcox2PJuhwegt9ES8Ubvm9TfqerL',25:'1oUamhOOy3Pcmkz0KE-6tzA34SHDk-p_3',26:'1SsdJ3RTyBqJ1sd_m6BswKcWyHOLN8taE',36:'1X0QwLynuqA1Glz_jN15vh87jVKqRS-AN',37:'1IA-__dUcWT56-5B3mIRyDsETOz1BCj50',38:'1gkYzj_Y4melRce5A49aqXl5aaL3amHb0',39:'1Z2lKMzhYr2i8gMzCOPJ6Em3hqxr302C5',40:'14TWMDC7yl-o47DY9G4mk1dozDpUHu-Ag',41:'13aostWfsiqNtcIsaG9QPtVzal0uDxBh7',42:'16J5-0WWpHC5aW2nbiZE92mGNVvvBAUL8',43:'1fUST3VSZVQgIZFyLVtoKm2NLYB1PIIwB',44:'1oyd85o3vBzL8-memFR5sukLkSytLQwmy',45:'1J5ii7Y6vxGtoO3CPzKOPm6bEXhHVUtCO',46:'1aaMPLzp-HqQA7KKpFU0sgV0QRA0_dBKR',47:'1aaMPLzp-HqQA7KKpFU0sgV0QRA0_dBKR',48:'1aaMPLzp-HqQA7KKpFU0sgV0QRA0_dBKR'};
 
-// Dữ liệu đầy đủ từ file bảng giá T6/2026
+// Ảnh mặc định từ Drive (đã thu thập)
+const IM_DEFAULT={8:'1Aw3dFMWdlBvT07XZB93Ok8M00ehYcRKK',9:'1G_s-8lK320TzNbTH1IPkUixNyrmVtJ0U',10:'1byTJauHUoPr5RbgLbhGU5zjhPXmcgrUz',11:'1OqtKlnyLpbrh5AgBbbCcNPizX_0OLfCi',14:'1--atPWj2aVQEbceBwgaGXwK7ys4xlnuN',15:'1OXx-MlMVZADFdzzuEFTJ96zAO6PdhsQ-',16:'1zPnTogE2OkKZCF9fRv7FK2PLxsN3oA8j',17:'1KLA-85k2gWY2N4DWSdCRbEI3f4RijCgy',18:'1L1kzYVBLMHSugIsEwSUOPWT-vsh7KBb1',19:'1jtaZTDCJKavvgkwE5UV2MPzS7UPJrvfK',20:'1JlgHE3n_norHxBjFtvLZ4WitcyAqLMKD',21:'1lcSU9EOVvlwf724eKiPdBB2NSZjZa9N6',22:'12uO36fLIIJwBV0XRP5OKHiBFh-CHyVOX',23:'1Unkc66BFB8ouFoMMJXtSsaVV0q0-W66h',24:'1IxoSGcox2PJuhwegt9ES8Ubvm9TfqerL',25:'1oUamhOOy3Pcmkz0KE-6tzA34SHDk-p_3',26:'1SsdJ3RTyBqJ1sd_m6BswKcWyHOLN8taE',36:'1X0QwLynuqA1Glz_jN15vh87jVKqRS-AN',37:'1IA-__dUcWT56-5B3mIRyDsETOz1BCj50',38:'1gkYzj_Y4melRce5A49aqXl5aaL3amHb0',39:'1Z2lKMzhYr2i8gMzCOPJ6Em3hqxr302C5',40:'14TWMDC7yl-o47DY9G4mk1dozDpUHu-Ag',41:'13aostWfsiqNtcIsaG9QPtVzal0uDxBh7',42:'16J5-0WWpHC5aW2nbiZE92mGNVvvBAUL8',43:'1fUST3VSZVQgIZFyLVtoKm2NLYB1PIIwB',44:'1oyd85o3vBzL8-memFR5sukLkSytLQwmy',45:'1J5ii7Y6vxGtoO3CPzKOPm6bEXhHVUtCO',46:'1aaMPLzp-HqQA7KKpFU0sgV0QRA0_dBKR',47:'1aaMPLzp-HqQA7KKpFU0sgV0QRA0_dBKR',48:'1aaMPLzp-HqQA7KKpFU0sgV0QRA0_dBKR'};
+
+// Load từ localStorage (override IM_DEFAULT)
+let IM_LOCAL={};
+try{IM_LOCAL=JSON.parse(localStorage.getItem('dw_img_map')||'{}');}catch(e){}
+const IM=Object.assign({},IM_DEFAULT,IM_LOCAL);
+
+// Parse Drive link → File ID
+function parseId(s){
+  s=s.trim();
+  const m=s.match(//d/([a-zA-Z0-9_-]{25,})/)||s.match(/[?&]id=([a-zA-Z0-9_-]{25,})/);
+  if(m)return m[1];
+  if(/^[a-zA-Z0-9_-]{25,}$/.test(s))return s;
+  return null;
+}
+
 const P=[
-// VANG ÚC
 {id:101,n:"ROWALLAN Red Blend",c:"Úc",r:"South Australia",g:"Red Blend",v:"2022",a:"14%",nm:275000,pR:220000,pW:154000,cat:"VANG ÚC"},
 {id:102,n:"ROWALLAN Sauvignon Blanc",c:"Úc",r:"South Australia",g:"Sauvignon Blanc",v:"2022",a:"13%",nm:275000,pR:220000,pW:154000,cat:"VANG ÚC"},
 {id:103,n:"MAISON BLUE SPARKLING DARK",c:"Úc",r:"South Australia",g:"Moscato",v:"2022",a:"0%",nm:450000,pR:270000,pW:189000,cat:"VANG ÚC"},
 {id:104,n:"KILLIBINBIN SPARKLE",c:"Úc",r:"South Australia",g:"Shiraz",v:"",a:"14.5%",nm:750000,pR:690000,pW:483000,cat:"VANG ÚC"},
 {id:105,n:"KILLIBINBIN SOCIAL",c:"Úc",r:"South Australia",g:"Cuvee Brut",v:"",a:"12.5%",nm:750000,pR:690000,pW:483000,cat:"VANG ÚC"},
-// VANG ROMANIA
 {id:8,n:"CUZA VODA Merlot 2020",c:"Romania",r:"Dealu Mare",g:"Merlot",v:"2020",a:"14.5%",nm:520000,pR:350000,pW:227500,cat:"VANG ROMANIA"},
 {id:9,n:"CUZA VODA Feteasca Neagra 2018",c:"Romania",r:"Dealu Mare",g:"Feteasca Neagra",v:"2018",a:"15%",nm:520000,pR:350000,pW:227500,cat:"VANG ROMANIA"},
 {id:10,n:"CUZA VODA Cabernet Sauvignon 2022",c:"Romania",r:"Dealu Mare",g:"Cabernet Sauvignon",v:"2022",a:"14%",nm:520000,pR:350000,pW:227500,cat:"VANG ROMANIA"},
 {id:11,n:"CUZA VODA Feteasca Regala & Riesling 2024",c:"Romania",r:"Dealu Mare",g:"Feteasca Regala, Riesling",v:"2024",a:"13%",nm:520000,pR:350000,pW:227500,cat:"VANG ROMANIA"},
-// VANG PHÁP
-{id:201,n:"PAPIN DE CASTILLON Cabernet Sauvignon 2022",c:"Pháp",r:"Castillon Côtes de Bordeaux",g:"Cabernet Sauvignon",v:"2022",a:"13.5%",nm:250000,pR:220000,pW:154000,cat:"VANG PHÁP"},
-{id:202,n:"GRAND SUD 1L Merlot Pays Doc 2023",c:"Pháp",r:"Pays d'Oc",g:"Merlot",v:"2023",a:"13.5%",nm:550000,pR:495000,pW:346500,cat:"VANG PHÁP"},
+{id:201,n:"PAPIN DE CASTILLON Cabernet Sauvignon 2022",c:"Pháp",r:"Castillon",g:"Cabernet Sauvignon",v:"2022",a:"13.5%",nm:250000,pR:220000,pW:154000,cat:"VANG PHÁP"},
+{id:202,n:"GRAND SUD 1L Merlot 2023",c:"Pháp",r:"Pays d'Oc",g:"Merlot",v:"2023",a:"13.5%",nm:550000,pR:495000,pW:346500,cat:"VANG PHÁP"},
 {id:203,n:"GRAND SUD 1L Medium Sweet Grenache 2023",c:"Pháp",r:"Pays d'Oc",g:"Grenache",v:"2023",a:"13%",nm:550000,pR:495000,pW:346500,cat:"VANG PHÁP"},
-{id:204,n:"GRAND SUD 1L Syrah Pays Doc 2023",c:"Pháp",r:"Pays d'Oc",g:"Syrah",v:"2023",a:"13%",nm:550000,pR:495000,pW:346500,cat:"VANG PHÁP"},
+{id:204,n:"GRAND SUD 1L Syrah 2023",c:"Pháp",r:"Pays d'Oc",g:"Syrah",v:"2023",a:"13%",nm:550000,pR:495000,pW:346500,cat:"VANG PHÁP"},
 {id:205,n:"GRAND SUD 1L Cabernet Sauvignon 2024",c:"Pháp",r:"Pays d'Oc",g:"Cabernet Sauvignon",v:"2024",a:"13.5%",nm:550000,pR:495000,pW:346500,cat:"VANG PHÁP"},
 {id:206,n:"GRAND SUD 1L Chardonnay 2024",c:"Pháp",r:"Pays d'Oc",g:"Chardonnay",v:"2024",a:"12.5%",nm:550000,pR:495000,pW:346500,cat:"VANG PHÁP"},
 {id:207,n:"GRAND SUD 1L Sauvignon Blanc 2024",c:"Pháp",r:"Pays d'Oc",g:"Sauvignon Blanc",v:"2024",a:"11%",nm:550000,pR:495000,pW:346500,cat:"VANG PHÁP"},
 {id:1,n:"CHATEAU PRADEAU MAZEAU Bordeaux 2022",c:"Pháp",r:"Bordeaux",g:"Merlot, Cab Franc, Cab Sauvignon",v:"2022",a:"14%",nm:750000,pR:750000,pW:255000,cat:"VANG PHÁP"},
 {id:2,n:"CHATEAU PRADEAU MAZEAU Bordeaux SUPERIEUR 2022",c:"Pháp",r:"Bordeaux",g:"Merlot, Cab Franc, Cab Sauvignon",v:"2022",a:"14%",nm:750000,pR:750000,pW:255000,cat:"VANG PHÁP"},
 {id:4,n:"CHATEAU LABARTHE Bordeaux 2023",c:"Pháp",r:"Bordeaux",g:"Merlot, Cab Franc, Cab Sauvignon",v:"2023",a:"14.5%",nm:550000,pR:360000,pW:234000,cat:"VANG PHÁP"},
-{id:5,n:"CHATEAU LA BASTIDE Côtes du Marmandais 2022",c:"Pháp",r:"Côtes du Marmandais",g:"Merlot, Malbec",v:"2022",a:"15.5%",nm:750000,pR:462000,pW:300300,cat:"VANG PHÁP"},
+{id:5,n:"CHATEAU LA BASTIDE 2022",c:"Pháp",r:"Côtes du Marmandais",g:"Merlot, Malbec",v:"2022",a:"15.5%",nm:750000,pR:462000,pW:300300,cat:"VANG PHÁP"},
 {id:208,n:"CHÂTEAU AUZIAS Mademoiselle Cabardès 2021",c:"Pháp",r:"Cabardès",g:"Syrah, Cab Franc, Grenache",v:"2021",a:"16%",nm:850000,pR:750000,pW:525000,cat:"VANG PHÁP"},
 {id:209,n:"TOURNEPIQUE Cahors 2019",c:"Pháp",r:"Cahors",g:"Malbec",v:"2019",a:"13%",nm:858000,pR:715000,pW:500500,cat:"VANG PHÁP"},
 {id:210,n:"CHATEAU LABADIE Cru Bourgeois 2022",c:"Pháp",r:"Médoc",g:"Merlot, Cab Sauvignon, Cab Franc, Petit Verdot",v:"2022",a:"14%",nm:1190000,pR:715000,pW:464750,cat:"VANG PHÁP"},
@@ -160,7 +314,6 @@ const P=[
 {id:213,n:"SAINTAYME Saint Emilion Grand Cru 2021",c:"Pháp",r:"Saint-Émilion",g:"Merlot",v:"2021",a:"13.5%",nm:1560000,pR:1300000,pW:845000,cat:"VANG PHÁP"},
 {id:214,n:"MANOIR DE GAY Pomerol 2020",c:"Pháp",r:"Pomerol",g:"Merlot",v:"2020",a:"14.5%",nm:5500000,pR:3000000,pW:1950000,cat:"VANG PHÁP"},
 {id:215,n:"CHATEAU PRIEURE LICHINE Margaux 2018",c:"Pháp",r:"Margaux",g:"Cab Sauvignon, Merlot, Petit Verdot",v:"2018",a:"14%",nm:4900000,pR:3630000,pW:2359500,cat:"VANG PHÁP"},
-// VANG MỸ
 {id:18,n:"CLOUD BREAK Petite Sirah 2021",c:"Mỹ",r:"California",g:"Petite Sirah",v:"2021",a:"13.5%",nm:850000,pR:715000,pW:464750,cat:"VANG MỸ"},
 {id:17,n:"CLOUD BREAK Zinfandel 2021",c:"Mỹ",r:"California",g:"Zinfandel",v:"2021",a:"14.5%",nm:850000,pR:715000,pW:464750,cat:"VANG MỸ"},
 {id:25,n:"LINE 39 Cabernet Sauvignon 2021",c:"Mỹ",r:"California",g:"Cabernet Sauvignon",v:"2021",a:"13.5%",nm:850000,pR:750000,pW:487500,cat:"VANG MỸ"},
@@ -172,7 +325,6 @@ const P=[
 {id:302,n:"NAVIGATOR Napa Valley Chardonnay 2022",c:"Mỹ",r:"Napa Valley",g:"Chardonnay",v:"2022",a:"14.5%",nm:1850000,pR:1210000,pW:786500,cat:"VANG MỸ"},
 {id:303,n:"METHOD Napa Valley Cabernet Sauvignon 2020",c:"Mỹ",r:"Napa Valley",g:"Cabernet Sauvignon",v:"2020",a:"14.5%",nm:1980000,pR:1650000,pW:1155000,cat:"VANG MỸ"},
 {id:20,n:"CURMUDGEON Bourbon Barrel Aged 2022",c:"Mỹ",r:"California",g:"Zinfandel, Merlot, Petit Verdot",v:"2022",a:"15.9%",nm:1650000,pR:1100000,pW:715000,cat:"VANG MỸ"},
-// VANG Ý
 {id:401,n:"LUCADIMORI Semi Sweet",c:"Ý",r:"Puglia",g:"Red Blend",v:"",a:"10%",nm:350000,pR:275000,pW:192500,cat:"VANG Ý"},
 {id:49,n:"LUCADIMORI Rosso 2023",c:"Ý",r:"Puglia",g:"Negroamaro, Sangiovese",v:"2023",a:"14%",nm:450000,pR:330000,pW:231000,cat:"VANG Ý"},
 {id:50,n:"LUCADIMORI Limited Edition 2020",c:"Ý",r:"Puglia",g:"Negroamaro",v:"2020",a:"16%",nm:550000,pR:490000,pW:343000,cat:"VANG Ý"},
@@ -180,8 +332,8 @@ const P=[
 {id:403,n:"EMPIRE Negroamaro Sangiovese 2023",c:"Ý",r:"Puglia",g:"Negroamaro, Sangiovese",v:"2023",a:"14.5%",nm:330000,pR:295000,pW:206500,cat:"VANG Ý"},
 {id:404,n:"METERIUM Primitivo 2019",c:"Ý",r:"Puglia",g:"Primitivo",v:"2019",a:"17%",nm:680000,pR:600000,pW:420000,cat:"VANG Ý"},
 {id:405,n:"GONFALONE Chianti DOCG 2024",c:"Ý",r:"Chianti",g:"Sangiovese, Canaiolo Nero",v:"2024",a:"13%",nm:680000,pR:680000,pW:476000,cat:"VANG Ý"},
-{id:406,n:"PAPALE DI MANDURIA Primitivo 2020",c:"Ý",r:"Manduria, Puglia",g:"Primitivo",v:"2020",a:"14.5%",nm:1890000,pR:1890000,pW:1323000,cat:"VANG Ý"},
-{id:407,n:"LEGGENDA DI MANDURIA DOC Primitivo 2021",c:"Ý",r:"Manduria, Puglia",g:"Primitivo",v:"2021",a:"16%",nm:1800000,pR:1800000,pW:1260000,cat:"VANG Ý"},
+{id:406,n:"PAPALE DI MANDURIA Primitivo 2020",c:"Ý",r:"Manduria",g:"Primitivo",v:"2020",a:"14.5%",nm:1890000,pR:1890000,pW:1323000,cat:"VANG Ý"},
+{id:407,n:"LEGGENDA DI MANDURIA DOC Primitivo 2021",c:"Ý",r:"Manduria",g:"Primitivo",v:"2021",a:"16%",nm:1800000,pR:1800000,pW:1260000,cat:"VANG Ý"},
 {id:408,n:"BARONE RICCASOLI DI PUGLIA Negroamaro 2024",c:"Ý",r:"Puglia",g:"Negroamaro",v:"2024",a:"16%",nm:990000,pR:935000,pW:467500,cat:"VANG Ý"},
 {id:409,n:"DELAS ANGELO DI PUGLIA Primitivo",c:"Ý",r:"Puglia",g:"Primitivo",v:"",a:"17%",nm:1100000,pR:1100000,pW:550000,cat:"VANG Ý"},
 {id:410,n:"ROSSANA DI PUGLIA Primitivo 2021",c:"Ý",r:"Puglia",g:"Primitivo",v:"2021",a:"17.5%",nm:1780000,pR:1485000,pW:742500,cat:"VANG Ý"},
@@ -193,14 +345,14 @@ const P=[
 {id:36,n:"GIUSTINI AREALE Primitivo 2022",c:"Ý",r:"Puglia",g:"Primitivo",v:"2022",a:"14.5%",nm:1190000,pR:950000,pW:617500,cat:"VANG Ý"},
 {id:414,n:"GIUSTINI G-ICON Negroamaro 2024",c:"Ý",r:"Puglia",g:"Negroamaro",v:"2024",a:"15%",nm:1350000,pR:950000,pW:617500,cat:"VANG Ý"},
 {id:38,n:"GIUSTINI CALURA Appassimento 2022",c:"Ý",r:"Puglia",g:"Primitivo, Negroamaro",v:"2022",a:"16.5%",nm:1650000,pR:1050000,pW:682500,cat:"VANG Ý"},
-{id:415,n:"CF COLLEFRISIO In & Out Montepulciano 2019",c:"Ý",r:"Abruzzo",g:"Montepulciano",v:"2019",a:"14%",nm:1650000,pR:1650000,pW:1155000,cat:"VANG Ý"},
+{id:415,n:"CF COLLEFRISIO In & Out 2019",c:"Ý",r:"Abruzzo",g:"Montepulciano",v:"2019",a:"14%",nm:1650000,pR:1650000,pW:1155000,cat:"VANG Ý"},
 {id:48,n:"RUOTA LIBERA Appassimento Puglia 2022",c:"Ý",r:"Puglia",g:"Primitivo, Merlot, Sangiovese",v:"2022",a:"16.5%",nm:1380000,pR:1050000,pW:525000,cat:"VANG Ý"},
-{id:416,n:"F NEGROAMARO Salento IGP 2021",c:"Ý",r:"Salento, Puglia",g:"Negroamaro",v:"2021",a:"15%",nm:1450000,pR:1452000,pW:990000,cat:"VANG Ý"},
+{id:416,n:"F NEGROAMARO Salento IGP 2021",c:"Ý",r:"Salento",g:"Negroamaro",v:"2021",a:"15%",nm:1450000,pR:1452000,pW:990000,cat:"VANG Ý"},
 {id:417,n:"F GOLD 24 Karat Limited Edition",c:"Ý",r:"Puglia",g:"Negroamaro",v:"",a:"15%",nm:1850000,pR:1750000,pW:1225000,cat:"VANG Ý"},
 {id:418,n:"FLAVS Amarone DOCG Brown Label 2018",c:"Ý",r:"Valpolicella",g:"Corvina, Corvinone, Rondinella",v:"2018",a:"15.5%",nm:2600000,pR:1800000,pW:1260000,cat:"VANG Ý"},
 {id:419,n:"FLAVS Amarone DOCG Black Label 2016",c:"Ý",r:"Valpolicella",g:"Corvina, Corvinone, Rondinella",v:"2016",a:"16%",nm:3600000,pR:2000000,pW:1400000,cat:"VANG Ý"},
-{id:45,n:"MOCAVERO Tela di Ragno IGP 2015",c:"Ý",r:"Salento, Puglia",g:"Aglianico, Cabernet Sauvignon",v:"2015",a:"15.5%",nm:1500000,pR:1500000,pW:750000,cat:"VANG Ý"},
-{id:44,n:"MOCAVERO Montepetroso di Manduria DOP 2018",c:"Ý",r:"Manduria, Puglia",g:"Primitivo",v:"2018",a:"15%",nm:1500000,pR:1500000,pW:750000,cat:"VANG Ý"},
+{id:45,n:"MOCAVERO Tela di Ragno IGP 2015",c:"Ý",r:"Salento",g:"Aglianico, Cab Sauvignon",v:"2015",a:"15.5%",nm:1500000,pR:1500000,pW:750000,cat:"VANG Ý"},
+{id:44,n:"MOCAVERO Montepetroso di Manduria DOP 2018",c:"Ý",r:"Manduria",g:"Primitivo",v:"2018",a:"15%",nm:1500000,pR:1500000,pW:750000,cat:"VANG Ý"},
 {id:43,n:"MOCAVERO Rosso Delle Padule Appassimento IGP 2021",c:"Ý",r:"Puglia",g:"Blend",v:"2021",a:"16.5%",nm:1650000,pR:1050000,pW:682500,cat:"VANG Ý"}
 ];
 
@@ -208,25 +360,178 @@ const FL={"Pháp":"🇫🇷","Romania":"🇷🇴","Mỹ":"🇺🇸","Úc":"🇦�
 const DE={"Pháp":"Rượu vang Pháp với hương thơm trái cây đỏ chín, vani và gia vị. Tannin mềm mại, hậu vị dài thanh lịch.","Romania":"Rượu vang Romania với giống nho địa phương Feteasca độc đáo, hài hòa trái cây tươi và tannin thanh lịch.","Mỹ":"Rượu vang California hiện đại — trái cây nổi bật, dễ uống, hương quả mọng, vị mượt mà phù hợp mọi dịp.","Úc":"Rượu vang South Australia đậm đà, hương quả mọng chín, socola và hồ tiêu đặc trưng.","Ý":"Rượu vang Ý với Primitivo và Negroamaro độc đáo. Đậm màu, giàu trái cây chín, phong cách Mediterranean."};
 let KM="🎁 Mua 6 chai tặng 1 chai cùng loại\n🎉 Giảm 10% đơn từ 5 triệu\n📦 Free ship TP.HCM đơn từ 2 triệu\n💎 Tặng hộp quà cao cấp khi mua từ 3 chai";
 let aC={r:'',w:''};
+let curModalId=null;
+
 function fmt(n){return n?new Intl.NumberFormat('vi-VN').format(n)+'đ':'Liên hệ';}
 const PH='<div class="fb"><svg viewBox="0 0 24 24" fill="rgba(139,26,44,.15)"><path d="M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z"/></svg><span>Daily Wine</span></div>';
-function gT(t){['r','w','d'].forEach(x=>{document.getElementById('v'+x).style.display='none';document.getElementById('tb-'+x).classList.remove('a');});document.getElementById('v'+t).style.display='block';document.getElementById('tb-'+t).classList.add('a');if(t==='d')document.getElementById('kg').value=KM;}
+
+// Populate select sp
+function initSelect(){
+  const sel=document.getElementById('sel-prod');
+  sel.innerHTML='<option value="">-- Chọn sản phẩm --</option>'+P.map(p=>`<option value="${p.id}">${p.n}</option>`).join('');
+}
+
+function gT(t){['r','w','d'].forEach(x=>{document.getElementById('v'+x).style.display='none';document.getElementById('tb-'+x).classList.remove('a');});document.getElementById('v'+t).style.display='block';document.getElementById('tb-'+t).classList.add('a');if(t==='d'){document.getElementById('kg').value=KM;renderImgList();}}
 function dL(){if(document.getElementById('pi').value==='Teotiepthi@1'){document.getElementById('lw').style.display='none';document.getElementById('wc').style.display='block';document.getElementById('wbg').style.display='block';rPs('w');rd('w');}else document.getElementById('pe').style.display='block';}
 function cats(){return[...new Set(P.map(p=>p.cat))];}
 function rPs(m){const el=document.getElementById('ps-'+m);el.innerHTML=['Tất cả',...cats()].map((c,i)=>`<span class="p${(!aC[m]&&i===0)||(c===aC[m])?' a':''}" onclick="sC('${i===0?'':c}','${m}')">${i===0?'🍷 Tất cả':c}</span>`).join('');}
 function sC(c,m){aC[m]=c;document.querySelectorAll('#ps-'+m+' .p').forEach(p=>p.classList.remove('a'));(document.querySelectorAll('#ps-'+m+' .p')[c?cats().indexOf(c)+1:0])?.classList.add('a');rd(m);}
 function gF(m){const q=(document.getElementById('s'+m)?.value||'').toLowerCase(),co=document.getElementById('f'+m)?.value||'';return P.filter(p=>(!q||p.n.toLowerCase().includes(q)||p.g.toLowerCase().includes(q))&&(!co||p.c===co)&&(!aC[m]||p.cat===aC[m]));}
-function ci(p){const u=IM[p.id]?DR(IM[p.id]):null;return u?`<img src="${u}" loading="lazy" onerror="this.remove()">${PH}`:PH;}
-function rd(m){const l=gF(m),g=document.getElementById('gd-'+m),w=m==='w';if(!l.length){g.innerHTML='<div class="nr">Không tìm thấy 🍷</div>';return;}g.innerHTML=l.map(p=>`<div class="cd" id="c-${m}-${p.id}" onclick="sP(${p.id},'${m}')"><div class="ci">${ci(p)}<span class="cbg">${FL[p.c]||''} ${p.c}</span></div><div class="cn">${p.n}</div><div class="cg">🍇 ${p.g}</div><div class="ca">🍷 ${p.a}${p.v?' · 📅 '+p.v:''}</div><div class="cpr">${w?fmt(p.pW):'Xem giá'}</div></div>`).join('');}
-function sP(id,m){const p=P.find(x=>x.id===id);if(!p)return;document.querySelectorAll('.cd').forEach(c=>c.classList.remove('sel'));document.getElementById('c-'+m+'-'+id)?.classList.add('sel');const w=m==='w',de=DE[p.c]||'Rượu vang chất lượng cao nhập khẩu chính hãng bởi Daily Wine Việt Nam.',dt=document.getElementById('dt-'+m);const imgId=IM[p.id],iu=imgId?DR(imgId):null;const dimH=iu?`<img src="${iu}" onerror="this.parentElement.innerHTML='<div class=\\'dph\\'><svg viewBox=\\'0 0 24 24\\' fill=\\'rgba(139,26,44,.12)\\'><path d=\\'M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z\\'/></svg><span>Daily Wine</span></div>'">`:'<div class="dph"><svg viewBox="0 0 24 24" fill="rgba(139,26,44,.12)"><path d="M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z"/></svg><span>Daily Wine</span></div>';
-dt.className='dt sh';
-dt.innerHTML=`<div class="dtp"><div class="dim">${dimH}</div><div class="dii"><div class="dn">${p.n}</div><div class="ig"><div class="ii"><div class="il">🌍 Quốc gia</div><div class="iv">${FL[p.c]||''} ${p.c}</div></div><div class="ii"><div class="il">📍 Vùng trồng</div><div class="iv">${p.r}</div></div><div class="ii"><div class="il">🍇 Giống nho</div><div class="iv">${p.g}</div></div><div class="ii"><div class="il">📅 Niên vụ</div><div class="iv">${p.v||'—'}</div></div><div class="ii"><div class="il">🍷 ABV</div><div class="iv">${p.a}</div></div><div class="ii"><div class="il">📦 Danh mục</div><div class="iv">${p.cat}</div></div></div>
-<div class="pbox"><div class="pi2"><div class="pilbl">🏷️ Giá niêm yết</div><div class="pival nm">${fmt(p.nm)}</div></div><div class="pi2 hl"><div class="pilbl">🛒 Giá bán lẻ</div><div class="pival">${fmt(p.pR)}</div></div>${w?'<div class="pi2 ws"><div class="pilbl">💼 Giá bán sỉ</div><div class="pival ws">'+fmt(p.pW)+'</div></div>':''}</div>
-<a class="wl" href="https://www.dailywine.vn/?s=${encodeURIComponent(p.n)}" target="_blank">🔗 Xem trên dailywine.vn</a></div></div><div class="db"><h4>Mô tả sản phẩm</h4><div class="dx">${de}</div></div><div class="kb"><div class="kh"><div class="kt">🎯 Chương Trình KM Tháng Này</div><button class="ke" onclick="tK('${m}')">✏️ Cập nhật</button></div><div id="kd-${m}" class="kc">${KM.replace(/\n/g,'<br>')}</div><textarea id="kt-${m}" class="kta"></textarea><button id="ks-${m}" class="ksv" onclick="sK('${m}')">💾 Lưu</button></div>`;
-dt.scrollIntoView({behavior:'smooth',block:'nearest'});}
+
+function getImg(p){return IM[p.id]?DR(IM[p.id]):null;}
+function ci(p){const u=getImg(p);return u?`<img src="${u}" loading="lazy" onerror="this.remove()">${PH}`:PH;}
+
+function rd(m){
+  const l=gF(m),g=document.getElementById('gd-'+m),w=m==='w';
+  if(!l.length){g.innerHTML='<div class="nr">Không tìm thấy 🍷</div>';return;}
+  g.innerHTML=l.map(p=>`<div class="cd" id="c-${m}-${p.id}" onclick="sP(${p.id},'${m}')">
+<div class="ci">${ci(p)}<span class="cbg">${FL[p.c]||''} ${p.c}</span>
+<button class="img-btn" onclick="event.stopPropagation();openModal(${p.id})">📷 Cập nhật ảnh</button>
+</div>
+<div class="cn">${p.n}</div>
+<div class="cg">🍇 ${p.g}</div>
+<div class="ca">🍷 ${p.a}${p.v?' · 📅 '+p.v:''}</div>
+<div class="cpr">${w?fmt(p.pW):'Xem giá'}</div>
+</div>`).join('');
+}
+
+function sP(id,m){
+  const p=P.find(x=>x.id===id);if(!p)return;
+  document.querySelectorAll('.cd').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('c-'+m+'-'+id)?.classList.add('sel');
+  const w=m==='w',de=DE[p.c]||'Rượu vang chất lượng cao nhập khẩu chính hãng bởi Daily Wine Việt Nam.',dt=document.getElementById('dt-'+m);
+  const iu=getImg(p);
+  const dimH=iu?`<img src="${iu}" onerror="this.parentElement.innerHTML='<div class=\\'dph\\'><svg viewBox=\\'0 0 24 24\\' fill=\\'rgba(139,26,44,.12)\\'><path d=\\'M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z\\'/></svg><span>Daily Wine</span></div>'">`:'<div class="dph"><svg viewBox="0 0 24 24" fill="rgba(139,26,44,.12)"><path d="M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z"/></svg><span>Daily Wine</span></div>';
+  dt.className='dt sh';
+  dt.innerHTML=`<div class="dtp">
+<div class="dim">${dimH}<button class="dim-upd" onclick="openModal(${p.id})">📷 Cập nhật ảnh</button></div>
+<div class="dii"><div class="dn">${p.n}</div>
+<div class="ig">
+<div class="ii"><div class="il">🌍 Quốc gia</div><div class="iv">${FL[p.c]||''} ${p.c}</div></div>
+<div class="ii"><div class="il">📍 Vùng trồng</div><div class="iv">${p.r}</div></div>
+<div class="ii"><div class="il">🍇 Giống nho</div><div class="iv">${p.g}</div></div>
+<div class="ii"><div class="il">📅 Niên vụ</div><div class="iv">${p.v||'—'}</div></div>
+<div class="ii"><div class="il">🍷 ABV</div><div class="iv">${p.a}</div></div>
+<div class="ii"><div class="il">📦 Danh mục</div><div class="iv">${p.cat}</div></div>
+</div>
+<div class="pbox">
+<div class="pi2"><div class="pilbl">🏷️ Giá niêm yết</div><div class="pival nm">${fmt(p.nm)}</div></div>
+<div class="pi2 hl"><div class="pilbl">🛒 Giá bán lẻ</div><div class="pival">${fmt(p.pR)}</div></div>
+${w?'<div class="pi2 ws"><div class="pilbl">💼 Giá bán sỉ</div><div class="pival ws">'+fmt(p.pW)+'</div></div>':''}
+</div>
+<a class="wl" href="https://www.dailywine.vn/?s=${encodeURIComponent(p.n)}" target="_blank">🔗 Xem trên dailywine.vn</a>
+</div></div>
+<div class="db"><h4>Mô tả sản phẩm</h4><div class="dx">${de}</div></div>
+<div class="kb"><div class="kh"><div class="kt">🎯 Chương Trình KM Tháng Này</div><button class="ke" onclick="tK('${m}')">✏️ Cập nhật</button></div>
+<div id="kd-${m}" class="kc">${KM.replace(/\n/g,'<br>')}</div>
+<textarea id="kt-${m}" class="kta"></textarea>
+<button id="ks-${m}" class="ksv" onclick="sK('${m}')">💾 Lưu</button></div>`;
+  dt.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// MODAL functions
+function openModal(id){
+  curModalId=id;
+  const p=P.find(x=>x.id===id);
+  document.getElementById('modal-pname').textContent=p?p.n:'';
+  document.getElementById('modal-inp').value='';
+  document.getElementById('modal-prev').innerHTML='<span>Ảnh xem trước sẽ hiện ở đây</span>';
+  document.getElementById('modal-img').classList.add('show');
+  // Set select trong data tab
+  document.getElementById('sel-prod').value=id;
+}
+function closeModal(){document.getElementById('modal-img').classList.remove('show');curModalId=null;}
+function modalPreview(){
+  const val=document.getElementById('modal-inp').value;
+  const fid=parseId(val);
+  const prev=document.getElementById('modal-prev');
+  if(fid){prev.innerHTML=`<img src="${DR(fid)}" onerror="this.parentElement.innerHTML='<span>Không load được ảnh</span>'">`;}
+  else{prev.innerHTML='<span>Link không hợp lệ</span>';}
+}
+function modalSave(){
+  if(!curModalId)return;
+  const val=document.getElementById('modal-inp').value;
+  const fid=parseId(val);
+  if(!fid){alert('Link không hợp lệ!');return;}
+  IM[curModalId]=fid;
+  IM_LOCAL[curModalId]=fid;
+  localStorage.setItem('dw_img_map',JSON.stringify(IM_LOCAL));
+  closeModal();
+  rd('r');rd('w');
+  renderImgList();
+  alert('✅ Đã lưu ảnh cho sản phẩm!');
+}
+
+// Data tab functions
+function previewImg(){
+  const val=document.getElementById('inp-drive').value;
+  const fid=parseId(val);
+  const box=document.getElementById('preview-box');
+  if(fid){box.style.display='flex';box.innerHTML=`<img src="${DR(fid)}" style="max-width:100%;max-height:100%;object-fit:contain" onerror="this.parentElement.innerHTML='<span>Không load được ảnh</span>'">`;}
+  else{box.style.display='flex';box.innerHTML='<span>Link không hợp lệ</span>';}
+}
+function saveImgMap(){
+  const pid=parseInt(document.getElementById('sel-prod').value);
+  const val=document.getElementById('inp-drive').value;
+  const fid=parseId(val);
+  const msg=document.getElementById('save-msg');
+  if(!pid){msg.style.display='block';msg.textContent='⚠️ Vui lòng chọn sản phẩm!';return;}
+  if(!fid){msg.style.display='block';msg.textContent='⚠️ Link không hợp lệ!';return;}
+  IM[pid]=fid;IM_LOCAL[pid]=fid;
+  localStorage.setItem('dw_img_map',JSON.stringify(IM_LOCAL));
+  msg.style.display='block';msg.textContent='✅ Đã lưu ảnh! Quay lại tab sản phẩm để xem kết quả.';
+  document.getElementById('inp-drive').value='';
+  document.getElementById('preview-box').style.display='none';
+  renderImgList();rd('r');rd('w');
+}
+function renderImgList(){
+  const items=Object.entries(IM_LOCAL);
+  document.getElementById('img-count').textContent=items.length;
+  const body=document.getElementById('img-list-body');
+  if(!items.length){body.innerHTML='<p style="font-size:12px;color:var(--m)">Chưa có ảnh nào được cập nhật thủ công.</p>';return;}
+  body.innerHTML=items.map(([id,fid])=>{
+    const p=P.find(x=>x.id==id);
+    return `<div class="img-item">
+<img src="${DR(fid)}" onerror="this.src=''">
+<span class="iname">${p?p.n:'ID: '+id}</span>
+<button class="idel" onclick="delImg(${id})">🗑️</button>
+</div>`;
+  }).join('');
+}
+function delImg(id){
+  delete IM[id];delete IM_LOCAL[id];
+  // Khôi phục default nếu có
+  if(IM_DEFAULT[id])IM[id]=IM_DEFAULT[id];
+  localStorage.setItem('dw_img_map',JSON.stringify(IM_LOCAL));
+  renderImgList();rd('r');rd('w');
+}
+function exportImgMap(){
+  const data=JSON.stringify(IM_LOCAL,null,2);
+  const a=document.createElement('a');
+  a.href='data:application/json,'+encodeURIComponent(data);
+  a.download='dailywine_images.json';a.click();
+}
+function importImgMap(inp){
+  const f=inp.files[0];if(!f)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    try{
+      const data=JSON.parse(e.target.result);
+      Object.assign(IM,data);Object.assign(IM_LOCAL,data);
+      localStorage.setItem('dw_img_map',JSON.stringify(IM_LOCAL));
+      renderImgList();rd('r');rd('w');
+      alert('✅ Nhập dữ liệu thành công! '+Object.keys(data).length+' ảnh.');
+    }catch(err){alert('❌ File không hợp lệ!');}
+  };
+  reader.readAsText(f);
+}
+
 function tK(m){const t=document.getElementById('kt-'+m),s=document.getElementById('ks-'+m),d=document.getElementById('kd-'+m),sh=t.style.display!=='block';t.style.display=sh?'block':'none';s.style.display=sh?'block':'none';d.style.display=sh?'none':'block';if(sh)t.value=KM;}
 function sK(m){KM=document.getElementById('kt-'+m).value;document.getElementById('kd-'+m).innerHTML=KM.replace(/\n/g,'<br>');document.getElementById('kt-'+m).style.display='none';document.getElementById('ks-'+m).style.display='none';document.getElementById('kd-'+m).style.display='block';}
 function sKG(){KM=document.getElementById('kg').value;const t=document.getElementById('tst');t.style.display='inline';setTimeout(()=>t.style.display='none',2500);}
-function hU(i){if(i.files&&i.files[0]){const m=document.getElementById('um');m.style.display='block';m.textContent='✅ Đã nhận: '+i.files[0].name;}}
-rPs('r');rd('r');
+
+// Close modal khi click overlay
+document.getElementById('modal-img').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+initSelect();rPs('r');rd('r');
 </script></body></html>
