@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Daily Wine — Bảng Báo Giá</title>
-<style>*{box-sizing:border-box;margin:0;padding:0}:root{--w:#8B1A2C;--g:#B8860B;--b:#e5e7eb;--m:#6b7280}body{font-family:-apple-system,sans-serif;background:#FAFAF8;color:#1a1a1a}
-header{background:var(--w);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:99}
-.logo{color:#fff;font-size:17px;font-weight:700}.lsub{font-size:10px;opacity:.7;font-weight:400}
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--w:#8B1A2C;--g:#B8860B;--b:#e5e7eb;--m:#6b7280;--bg:#FAFAF8}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:#1a1a1a}
+header{background:var(--w);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:99;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.logo{color:#fff}.logo-t{font-size:17px;font-weight:700}.logo-s{font-size:10px;opacity:.7}
 #wbg{display:none;background:rgba(255,255,255,.2);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px}
 .tabs{display:flex;background:#fff;border-bottom:1px solid var(--b);padding:0 16px;overflow-x:auto}
 .tb{padding:11px 16px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:none;color:var(--m);border-bottom:2px solid transparent;white-space:nowrap}
@@ -18,17 +21,23 @@ header{background:var(--w);padding:0 20px;display:flex;align-items:center;justif
 .cd{background:#fff;border:1px solid var(--b);border-radius:10px;padding:12px;cursor:pointer;transition:.15s}
 .cd:hover{border-color:var(--w);transform:translateY(-1px);box-shadow:0 2px 8px rgba(139,26,44,.1)}
 .cd.sel{border:2px solid var(--w)}
-.ci{width:100%;height:120px;background:linear-gradient(135deg,#fdf2f4,#fdf8f9);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:9px;overflow:hidden;position:relative}
-.ci img{width:100%;height:100%;object-fit:contain}.ci .fb{display:none;flex-direction:column;align-items:center;gap:4px}
-.ci .fb svg{width:32px;height:32px;fill:rgba(139,26,44,.15)}.ci .fb span{font-size:9px;color:#bbb}
-.cbg{position:absolute;top:6px;right:6px;font-size:10px;padding:1px 6px;border-radius:8px;background:rgba(139,26,44,.08);color:var(--w);font-weight:600}
+.ci{width:100%;height:130px;background:linear-gradient(135deg,#fdf2f4,#fdf8f9);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:9px;overflow:hidden;position:relative}
+.ci img{width:100%;height:100%;object-fit:contain;position:relative;z-index:1}
+.fb{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:linear-gradient(135deg,#fdf2f4,#fdf8f9)}
+.fb svg{width:32px;height:32px;fill:rgba(139,26,44,.15)}
+.fb span{font-size:9px;color:#bbb}
+.cbg{position:absolute;top:6px;right:6px;font-size:10px;padding:1px 6px;border-radius:8px;background:rgba(139,26,44,.08);color:var(--w);font-weight:600;z-index:2}
 .cn{font-size:11px;font-weight:600;margin-bottom:3px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px}
 .cg{font-size:10px;color:var(--m);margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ca{font-size:10px;color:#9ca3af}.cpr{margin-top:7px;padding-top:7px;border-top:1px solid var(--b);font-size:11px;font-weight:600;color:var(--w)}
-.dt{background:#fff;border:1px solid var(--b);border-radius:10px;padding:18px;margin-top:14px;display:none}.dt.sh{display:block}
+.ca{font-size:10px;color:#9ca3af}
+.cpr{margin-top:7px;padding-top:7px;border-top:1px solid var(--b);font-size:11px;font-weight:600;color:var(--w)}
+.dt{background:#fff;border:1px solid var(--b);border-radius:10px;padding:18px;margin-top:14px;display:none}
+.dt.sh{display:block}
 .dtp{display:flex;gap:16px;flex-wrap:wrap}
-.dim{width:150px;min-width:150px;height:200px;background:linear-gradient(135deg,#fdf2f4,#fdf8f9);border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.dim{width:160px;min-width:160px;height:220px;background:linear-gradient(135deg,#fdf2f4,#fdf8f9);border-radius:8px;overflow:hidden;border:1px solid var(--b);display:flex;align-items:center;justify-content:center}
 .dim img{width:100%;height:100%;object-fit:contain}
+.dph{display:flex;flex-direction:column;align-items:center;gap:8px;color:#ccc;font-size:11px;text-align:center;padding:10px}
+.dph svg{width:48px;height:48px;fill:rgba(139,26,44,.12)}
 .dii{flex:1;min-width:180px}
 .dn{font-size:16px;font-weight:700;margin-bottom:12px;line-height:1.4}
 .ig{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
@@ -36,7 +45,8 @@ header{background:var(--w);padding:0 20px;display:flex;align-items:center;justif
 .il{font-size:9px;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1px}
 .iv{font-size:12px;font-weight:600}
 .pb{padding:10px 12px;background:rgba(139,26,44,.04);border-radius:7px;border:1px solid rgba(139,26,44,.12);margin-bottom:12px}
-.pl{font-size:9px;color:var(--m);text-transform:uppercase}.pv{font-size:15px;font-weight:700;color:var(--w)}
+.pl{font-size:9px;color:var(--m);text-transform:uppercase;letter-spacing:.04em}
+.pv{font-size:15px;font-weight:700;color:var(--w)}
 .wl{margin-top:8px;display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--w);text-decoration:none;padding:4px 10px;border:1px solid rgba(139,26,44,.2);border-radius:5px}
 .db{border-top:1px solid var(--b);padding-top:12px;margin-top:12px}
 .db h4{font-size:10px;color:var(--m);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
@@ -51,101 +61,80 @@ header{background:var(--w);padding:0 20px;display:flex;align-items:center;justif
 .ls{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;gap:12px}
 .li{width:56px;height:56px;background:rgba(139,26,44,.08);border-radius:50%;display:flex;align-items:center;justify-content:center}
 .li svg{width:26px;height:26px;fill:none;stroke:var(--w);stroke-width:1.8}
-.lt{font-size:16px;font-weight:600}.lb{font-size:12px;color:var(--m);text-align:center;max-width:260px;line-height:1.6}
+.lt{font-size:16px;font-weight:600}
+.lb{font-size:12px;color:var(--m);text-align:center;max-width:260px;line-height:1.6}
 .linp{padding:9px 14px;border:1px solid var(--b);border-radius:7px;font-size:13px;width:220px;text-align:center;letter-spacing:.1em}
 .linp:focus{outline:none;border-color:var(--w)}
 .lbtn{padding:9px 28px;background:var(--w);color:#fff;border:none;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer}
 .lerr{font-size:11px;color:#dc2626;display:none}
-.sec{margin-bottom:18px}.sec h3{font-size:13px;font-weight:600;margin-bottom:9px}
+.sec{margin-bottom:18px}
+.sec h3{font-size:13px;font-weight:600;margin-bottom:9px}
 .uz{border:2px dashed var(--b);border-radius:9px;padding:24px;text-align:center;cursor:pointer}
-.uz:hover{border-color:var(--w)}.uz p{font-size:12px;color:var(--m);margin-top:5px}.uz b{color:var(--w)}
+.uz:hover{border-color:var(--w)}
+.uz p{font-size:12px;color:var(--m);margin-top:5px}
+.uz b{color:var(--w)}
 .km2{background:#f9fafb;border-radius:9px;padding:14px}
 .km2 textarea{width:100%;min-height:100px;font-size:12px;padding:9px 11px;border:1px solid var(--b);border-radius:6px;background:#fff;resize:vertical;line-height:1.7;font-family:inherit;margin-bottom:9px}
 .km2s{padding:7px 20px;background:var(--w);color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer}
 .ts{font-size:11px;color:#16a34a;margin-left:8px;display:none}
 .nr{text-align:center;padding:40px;color:var(--m);font-size:13px;grid-column:1/-1}
-@media(max-width:600px){.ig{grid-template-columns:1fr}.dtp{flex-direction:column}.dim{width:100%;height:180px}.tr{flex-direction:column}}</style></head>
+@media(max-width:600px){.ig{grid-template-columns:1fr}.dtp{flex-direction:column}.dim{width:100%;height:180px}.tr{flex-direction:column}}
+</style></head>
 <body>
-<header><div class="logo">Daily Wine<div class="lsub">BẢNG BÁO GIÁ T5/2025</div></div><div id="wbg">✅ Đại lý xác thực</div></header>
+<header>
+<div class="logo"><div class="logo-t">Daily Wine</div><div class="logo-s">BẢNG BÁO GIÁ T5/2025</div></div>
+<div id="wbg">✅ Đại lý xác thực</div>
+</header>
 <div class="tabs">
 <button class="tb a" onclick="gT('r')" id="tb-r">🛒 Bán Lẻ</button>
 <button class="tb" onclick="gT('w')" id="tb-w">🏪 Bán Sỉ</button>
 <button class="tb" onclick="gT('d')" id="tb-d">⚙️ Quản Lý Dữ Liệu</button>
 </div>
-<div id="vr" class="ct"><div class="tr"><input id="sr" placeholder="🔍 Tìm tên, giống nho..." oninput="rd('r')"><select id="fr" onchange="rd('r')"><option value="">Tất cả xuất xứ</option><option value="Pháp">🇫🇷 Vang Pháp</option><option value="Chile">🇨🇱 Vang Chile</option><option value="Romania">🇷🇴 Vang Romania</option><option value="Mỹ">🇺🇸 Vang Mỹ</option><option value="Úc">🇦🇺 Vang Úc</option><option value="Ý">🇮🇹 Vang Ý</option></select></div><div class="ps" id="ps-r"></div><div class="gd" id="gd-r"></div><div class="dt" id="dt-r"></div></div>
+<div id="vr" class="ct">
+<div class="tr"><input id="sr" placeholder="🔍 Tìm tên, giống nho..." oninput="rd('r')"><select id="fr" onchange="rd('r')"><option value="">Tất cả xuất xứ</option><option value="Pháp">🇫🇷 Vang Pháp</option><option value="Chile">🇨🇱 Vang Chile</option><option value="Romania">🇷🇴 Vang Romania</option><option value="Mỹ">🇺🇸 Vang Mỹ</option><option value="Úc">🇦🇺 Vang Úc</option><option value="Ý">🇮🇹 Vang Ý</option></select></div>
+<div class="ps" id="ps-r"></div><div class="gd" id="gd-r"></div><div class="dt" id="dt-r"></div>
+</div>
 <div id="vw" style="display:none">
-<div id="lw"><div class="ls"><div class="li"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="lt">Khu vực đại lý</div><div class="lb">Nhập mật khẩu để xem giá sỉ.</div><input type="password" id="pi" class="linp" placeholder="Mật khẩu..." onkeydown="if(event.key==='Enter')dL()"><div id="pe" class="lerr">❌ Sai mật khẩu.</div><button class="lbtn" onclick="dL()">Xác nhận</button></div></div>
-<div id="wc" style="display:none" class="ct"><div class="tr"><input id="sw" placeholder="🔍 Tìm tên, giống nho..." oninput="rd('w')"><select id="fw" onchange="rd('w')"><option value="">Tất cả xuất xứ</option><option value="Pháp">🇫🇷 Vang Pháp</option><option value="Chile">🇨🇱 Vang Chile</option><option value="Romania">🇷🇴 Vang Romania</option><option value="Mỹ">🇺🇸 Vang Mỹ</option><option value="Úc">🇦🇺 Vang Úc</option><option value="Ý">🇮🇹 Vang Ý</option></select></div><div class="ps" id="ps-w"></div><div class="gd" id="gd-w"></div><div class="dt" id="dt-w"></div></div>
+<div id="lw"><div class="ls">
+<div class="li"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+<div class="lt">Khu vực dành cho đại lý</div>
+<div class="lb">Nhập mật khẩu để xem bảng giá sỉ.</div>
+<input type="password" id="pi" class="linp" placeholder="Mật khẩu..." onkeydown="if(event.key==='Enter')dL()">
+<div id="pe" class="lerr">❌ Sai mật khẩu.</div>
+<button class="lbtn" onclick="dL()">Xác nhận truy cập</button>
+</div></div>
+<div id="wc" style="display:none" class="ct">
+<div class="tr"><input id="sw" placeholder="🔍 Tìm tên, giống nho..." oninput="rd('w')"><select id="fw" onchange="rd('w')"><option value="">Tất cả xuất xứ</option><option value="Pháp">🇫🇷 Vang Pháp</option><option value="Chile">🇨🇱 Vang Chile</option><option value="Romania">🇷🇴 Vang Romania</option><option value="Mỹ">🇺🇸 Vang Mỹ</option><option value="Úc">🇦🇺 Vang Úc</option><option value="Ý">🇮🇹 Vang Ý</option></select></div>
+<div class="ps" id="ps-w"></div><div class="gd" id="gd-w"></div><div class="dt" id="dt-w"></div>
+</div>
 </div>
 <div id="vd" style="display:none" class="ct">
-<div class="sec"><h3>📂 Cập nhật danh mục sản phẩm</h3><div class="uz" onclick="document.getElementById('fu').click()"><input type="file" id="fu" accept=".xlsx,.csv" style="display:none" onchange="hU(this)"><div style="font-size:28px">📂</div><p>Kéo thả hoặc <b>click chọn file</b></p><p style="font-size:10px;color:#9ca3af;margin-top:3px">Hỗ trợ .xlsx, .csv — STT|Tên|Quốc gia|Vùng|Giống nho|Niên vụ|ABV|Giá lẻ|Giá sỉ|Mô tả</p></div><div id="um" style="font-size:11px;color:#16a34a;margin-top:7px;display:none"></div></div>
-<div class="sec"><h3>🎯 Cập nhật chương trình khuyến mãi</h3><div class="km2"><p style="font-size:11px;color:var(--m);margin-bottom:7px">Nội dung hiển thị trong box KM:</p><textarea id="kg" placeholder="VD:&#10;🎁 Mua 6 chai tặng 1 chai&#10;🎉 Giảm 10% đơn từ 5 triệu&#10;📦 Free ship TP.HCM"></textarea><button class="km2s" onclick="sKG()">💾 Lưu KM</button><span class="ts" id="tst">✅ Đã lưu!</span></div></div>
+<div class="sec"><h3>📂 Cập nhật danh mục sản phẩm</h3>
+<div class="uz" onclick="document.getElementById('fu').click()"><input type="file" id="fu" accept=".xlsx,.csv" style="display:none" onchange="hU(this)"><div style="font-size:28px">📂</div><p>Kéo thả hoặc <b>click chọn file</b></p><p style="font-size:10px;color:#9ca3af;margin-top:3px">Hỗ trợ .xlsx, .csv</p></div>
+<div id="um" style="font-size:11px;color:#16a34a;margin-top:7px;display:none"></div>
+</div>
+<div class="sec"><h3>🎯 Cập nhật chương trình khuyến mãi</h3>
+<div class="km2"><p style="font-size:11px;color:var(--m);margin-bottom:7px">Nội dung box KM:</p><textarea id="kg"></textarea><button class="km2s" onclick="sKG()">💾 Lưu KM</button><span class="ts" id="tst">✅ Đã lưu!</span></div>
+</div>
 </div>
 <script>
-const P=[
-{id:1,n:"CHÂTEAU PRADEAU MAZEAU BORDEAUX AOP",c:"Pháp",r:"Bordeaux",g:"Cabernet Sauvignon",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},
-{id:2,n:"CHÂTEAU PRADEAU MAZEAU BORDEAUX SUPERIEUR",c:"Pháp",r:"Bordeaux",g:"Red Blend",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},
-{id:3,n:"CHÂTEAU TERREBERT 2022",c:"Pháp",r:"Bordeaux",g:"Red Blend",v:"2022",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},
-{id:4,n:"CHÂTEAU LABERTHE BORDEAUX AOC 2023",c:"Pháp",r:"Bordeaux",g:"Red Blend",v:"2023",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},
-{id:5,n:"CHÂTEAU LA BASTIDE 2022",c:"Pháp",r:"Bordeaux",g:"Red Blend",v:"2022",a:"15.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},
-{id:6,n:"PAPIN DE CASTILLON CABERNET SAUVIGNON",c:"Pháp",r:"Castillon Côtes de Bordeaux",g:"Cabernet Sauvignon",v:"",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},
-{id:8,n:"CUZA VODA CABERNET SAUVIGNON RESERVE 2020",c:"Romania",r:"Dealu Mare",g:"Cabernet Sauvignon",v:"2020",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ROMANIA"},
-{id:9,n:"CUZA VODA FETEASCA NEAGRA 2018",c:"Romania",r:"Dealu Mare",g:"Feteasca Neagra",v:"2018",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ROMANIA"},
-{id:10,n:"DROPIA LEGEND FETEASCA REGALA RIESLING",c:"Romania",r:"Dobrogea",g:"Feteasca Regala, Riesling",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ROMANIA"},
-{id:11,n:"CUZA VODA MERLOT 2020",c:"Romania",r:"Dealu Mare",g:"Merlot",v:"2020",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ROMANIA"},
-{id:12,n:"PROJECTION CABERNET SAUVIGNON LODI",c:"Mỹ",r:"Lodi, California",g:"Cabernet Sauvignon",v:"",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:13,n:"MOTIF CABERNET SAUVIGNON RED HILL LAKE COUNTRY",c:"Mỹ",r:"Lake County, California",g:"Zinfandel",v:"",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:14,n:"CLOUD BREAK CHARDONNAY 2023",c:"Mỹ",r:"California",g:"Chardonnay",v:"2023",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:15,n:"CLOUD BREAK MOSCATO 2023",c:"Mỹ",r:"California",g:"Moscato",v:"2023",a:"9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:16,n:"CLOUD BREAK SAUVIGNON BLANC 2023",c:"Mỹ",r:"California",g:"Sauvignon Blanc",v:"2023",a:"13%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:17,n:"CLOUD BREAK ZINFANDEL 2021",c:"Mỹ",r:"California",g:"Zinfandel",v:"2021",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:18,n:"CLOUD BREAK PETITE SIRAH 2021",c:"Mỹ",r:"California",g:"Petite Sirah",v:"2021",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:19,n:"CLOUD BREAK CABERNET SAUVIGNON 2023",c:"Mỹ",r:"California",g:"Cabernet Sauvignon",v:"2023",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:20,n:"CURMUDGEON BOURBON BARREL AGED RED BLEND",c:"Mỹ",r:"California",g:"Red Blend",v:"",a:"15.9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:21,n:"LINE 39 RED BLEND 2022",c:"Mỹ",r:"California",g:"Red Blend",v:"2022",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:22,n:"LINE 39 PINOT NOIR 2021",c:"Mỹ",r:"California",g:"Pinot Noir",v:"2021",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:23,n:"LINE 39 PETITE SIRAH 2021",c:"Mỹ",r:"California",g:"Petite Sirah",v:"2021",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:24,n:"LINE 39 MERLOT 2022",c:"Mỹ",r:"California",g:"Merlot",v:"2022",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:25,n:"LINE 39 CABERNET SAUVIGNON 2021",c:"Mỹ",r:"California",g:"Cabernet Sauvignon",v:"2021",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:26,n:"LINE 39 CHARDONNAY 2023",c:"Mỹ",r:"California",g:"Chardonnay",v:"2023",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},
-{id:27,n:"IMPERIAL CABERNET SAUVIGNON 2022",c:"Úc",r:"South Australia",g:"Cabernet Sauvignon",v:"2022",a:"15.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},
-{id:28,n:"OZ STAMP SHIRAZ LIMITED EDITION",c:"Úc",r:"South Australia",g:"Shiraz",v:"",a:"16.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},
-{id:29,n:"ROWALLAN RED BLEND SOUTH AUSTRALIA",c:"Úc",r:"South Australia",g:"Red Blend",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},
-{id:30,n:"ROWALLAN SAUVIGNON BLANC SOUTH AUSTRALIA",c:"Úc",r:"South Australia",g:"Sauvignon Blanc",v:"",a:"13%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},
-{id:31,n:"SHEOAK LANE CABERNET SAUVIGNON",c:"Úc",r:"South Australia",g:"Cabernet Sauvignon",v:"",a:"14.9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},
-{id:32,n:"SHEOAK LANE SHIRAZ",c:"Úc",r:"South Australia",g:"Shiraz",v:"",a:"14.9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},
-{id:33,n:"SHEOAK LANE SHIRAZ CABERNET SAUVIGNON",c:"Úc",r:"South Australia",g:"Red Blend",v:"",a:"14.9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},
-{id:34,n:"GOLDEN SERPENT SAUVIGNON BLANC",c:"Úc",r:"South Australia",g:"Sauvignon Blanc",v:"",a:"13%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},
-{id:35,n:"GOLDEN SERPENT RED BLEND",c:"Úc",r:"South Australia",g:"Red Blend",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},
-{id:36,n:"GIUSTINI AREALE PRIMITIVO DI MANDURIA DOC",c:"Ý",r:"Puglia",g:"Primitivo",v:"",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:37,n:"GIUSTINI QVID PRIMITIVO SALENTO 2022",c:"Ý",r:"Salento, Puglia",g:"Primitivo",v:"2022",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:38,n:"GIUSTINI CALURA APPASSIMENTO",c:"Ý",r:"Puglia",g:"Red Blend",v:"",a:"16.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:39,n:"GIUSTINI ILLUMINATO FIANO SALENTO IGP 2022",c:"Ý",r:"Salento, Puglia",g:"Fiano",v:"2022",a:"12%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:40,n:"MOCAVERO SIRE CHARDONNAY I.G.P.",c:"Ý",r:"Puglia",g:"Chardonnay",v:"",a:"12.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:41,n:"MOCAVERO SIRE PRIMITIVO SALENTO",c:"Ý",r:"Salento, Puglia",g:"Primitivo",v:"",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:42,n:"MOCAVERO SIRE NEGROAMARO",c:"Ý",r:"Salento, Puglia",g:"Negroamaro",v:"",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:43,n:"MOCAVERO ROSSO DELLE PADULE APPASSIMENTO IGP",c:"Ý",r:"Puglia",g:"Red Blend",v:"",a:"16.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:44,n:"MOCAVERO MONTEPETROSO D.O.P. PRIMITIVO DI MANDURIA",c:"Ý",r:"Manduria, Puglia",g:"Primitivo",v:"",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:45,n:"MOCAVERO TELA DI RAGNO SALENTO I.G.P.",c:"Ý",r:"Salento, Puglia",g:"Red Blend",v:"",a:"15.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:46,n:"RUOTA LIBERA ROSSO PUGLIA 2022",c:"Ý",r:"Puglia",g:"Red Blend",v:"2022",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:47,n:"RUOTA LIBERA PRIMITIVO PUGLIA 2022",c:"Ý",r:"Puglia",g:"Red Blend",v:"2022",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:48,n:"RUOTA LIBERA APPASSIMENTO PUGLIA 2022",c:"Ý",r:"Puglia",g:"Red Blend",v:"2022",a:"16.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:49,n:"LUCADIMORI ROSSO 14%",c:"Ý",r:"Puglia",g:"Red Blend",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},
-{id:50,n:"LUCADIMORI LIMITED EDITION",c:"Ý",r:"Puglia",g:"Negroamaro",v:"",a:"16%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"}
-];
-const DE={"Pháp":"Rượu vang Bordeaux với hương thơm trái cây đỏ chín, vani và gia vị. Tannin mềm mại, hậu vị dài thanh lịch đặc trưng vùng Bordeaux.","Romania":"Rượu vang Romania với giống nho địa phương Feteasca độc đáo từ vùng Dealu Mare, hài hòa trái cây tươi và tannin thanh lịch.","Mỹ":"Rượu vang California — trái cây nổi bật, dễ uống, hương quả mọng và cherry đen, vị mượt mà phù hợp mọi dịp.","Úc":"Rượu vang South Australia đậm đà với Shiraz và Cabernet, hương quả mọng chín, socola và hồ tiêu đặc trưng.","Ý":"Rượu vang Puglia với Primitivo và Negroamaro độc đáo. Đậm màu, giàu trái cây chín, phong cách Mediterranean.","Chile":"Rượu vang Chile chất lượng ổn định, hương trái cây tươi sáng từ thung lũng Maipo và Colchagua."};
+const DR=id=>id?'https://drive.google.com/thumbnail?id='+id+'&sz=w400':null;
+const IM={8:'1Aw3dFMWdlBvT07XZB93Ok8M00ehYcRKK',9:'1G_s-8lK320TzNbTH1IPkUixNyrmVtJ0U',10:'1byTJauHUoPr5RbgLbhGU5zjhPXmcgrUz',11:'1OqtKlnyLpbrh5AgBbbCcNPizX_0OLfCi',14:'1--atPWj2aVQEbceBwgaGXwK7ys4xlnuN',15:'1OXx-MlMVZADFdzzuEFTJ96zAO6PdhsQ-',16:'1zPnTogE2OkKZCF9fRv7FK2PLxsN3oA8j',17:'1KLA-85k2gWY2N4DWSdCRbEI3f4RijCgy',18:'1L1kzYVBLMHSugIsEwSUOPWT-vsh7KBb1',19:'1jtaZTDCJKavvgkwE5UV2MPzS7UPJrvfK',20:'1JlgHE3n_norHxBjFtvLZ4WitcyAqLMKD',21:'1lcSU9EOVvlwf724eKiPdBB2NSZjZa9N6',22:'12uO36fLIIJwBV0XRP5OKHiBFh-CHyVOX',23:'1Unkc66BFB8ouFoMMJXtSsaVV0q0-W66h',24:'1IxoSGcox2PJuhwegt9ES8Ubvm9TfqerL',25:'1oUamhOOy3Pcmkz0KE-6tzA34SHDk-p_3',26:'1SsdJ3RTyBqJ1sd_m6BswKcWyHOLN8taE',36:'1X0QwLynuqA1Glz_jN15vh87jVKqRS-AN',37:'1IA-__dUcWT56-5B3mIRyDsETOz1BCj50',38:'1gkYzj_Y4melRce5A49aqXl5aaL3amHb0',39:'1Z2lKMzhYr2i8gMzCOPJ6Em3hqxr302C5',40:'14TWMDC7yl-o47DY9G4mk1dozDpUHu-Ag',41:'13aostWfsiqNtcIsaG9QPtVzal0uDxBh7',42:'16J5-0WWpHC5aW2nbiZE92mGNVvvBAUL8',43:'1fUST3VSZVQgIZFyLVtoKm2NLYB1PIIwB',44:'1oyd85o3vBzL8-memFR5sukLkSytLQwmy',45:'1J5ii7Y6vxGtoO3CPzKOPm6bEXhHVUtCO',46:'1aaMPLzp-HqQA7KKpFU0sgV0QRA0_dBKR',47:'1aaMPLzp-HqQA7KKpFU0sgV0QRA0_dBKR',48:'1aaMPLzp-HqQA7KKpFU0sgV0QRA0_dBKR'};
+const P=[{id:1,n:"CHÂTEAU PRADEAU MAZEAU BORDEAUX AOP",c:"Pháp",r:"Bordeaux",g:"Cabernet Sauvignon",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},{id:2,n:"CHÂTEAU PRADEAU MAZEAU BORDEAUX SUPERIEUR",c:"Pháp",r:"Bordeaux",g:"Red Blend",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},{id:3,n:"CHÂTEAU TERREBERT 2022",c:"Pháp",r:"Bordeaux",g:"Red Blend",v:"2022",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},{id:4,n:"CHÂTEAU LABERTHE BORDEAUX AOC 2023",c:"Pháp",r:"Bordeaux",g:"Red Blend",v:"2023",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},{id:5,n:"CHÂTEAU LA BASTIDE 2022",c:"Pháp",r:"Bordeaux",g:"Red Blend",v:"2022",a:"15.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},{id:6,n:"PAPIN DE CASTILLON CABERNET SAUVIGNON",c:"Pháp",r:"Castillon",g:"Cabernet Sauvignon",v:"",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG PHÁP"},{id:8,n:"CUZA VODA CABERNET SAUVIGNON RESERVE 2020",c:"Romania",r:"Dealu Mare",g:"Cabernet Sauvignon",v:"2020",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ROMANIA"},{id:9,n:"CUZA VODA FETEASCA NEAGRA 2018",c:"Romania",r:"Dealu Mare",g:"Feteasca Neagra",v:"2018",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ROMANIA"},{id:10,n:"DROPIA LEGEND FETEASCA REGALA RIESLING",c:"Romania",r:"Dobrogea",g:"Feteasca Regala, Riesling",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ROMANIA"},{id:11,n:"CUZA VODA MERLOT 2020",c:"Romania",r:"Dealu Mare",g:"Merlot",v:"2020",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ROMANIA"},{id:12,n:"PROJECTION CABERNET SAUVIGNON LODI",c:"Mỹ",r:"Lodi, California",g:"Cabernet Sauvignon",v:"",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:13,n:"MOTIF CABERNET SAUVIGNON RED HILL LAKE COUNTRY",c:"Mỹ",r:"Lake County, California",g:"Zinfandel",v:"",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:14,n:"CLOUD BREAK CHARDONNAY 2023",c:"Mỹ",r:"California",g:"Chardonnay",v:"2023",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:15,n:"CLOUD BREAK MOSCATO 2023",c:"Mỹ",r:"California",g:"Moscato",v:"2023",a:"9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:16,n:"CLOUD BREAK SAUVIGNON BLANC 2023",c:"Mỹ",r:"California",g:"Sauvignon Blanc",v:"2023",a:"13%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:17,n:"CLOUD BREAK ZINFANDEL 2021",c:"Mỹ",r:"California",g:"Zinfandel",v:"2021",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:18,n:"CLOUD BREAK PETITE SIRAH 2021",c:"Mỹ",r:"California",g:"Petite Sirah",v:"2021",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:19,n:"CLOUD BREAK CABERNET SAUVIGNON 2023",c:"Mỹ",r:"California",g:"Cabernet Sauvignon",v:"2023",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:20,n:"CURMUDGEON BOURBON BARREL AGED RED BLEND",c:"Mỹ",r:"California",g:"Red Blend",v:"",a:"15.9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:21,n:"LINE 39 RED BLEND 2022",c:"Mỹ",r:"California",g:"Red Blend",v:"2022",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:22,n:"LINE 39 PINOT NOIR 2021",c:"Mỹ",r:"California",g:"Pinot Noir",v:"2021",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:23,n:"LINE 39 PETITE SIRAH 2021",c:"Mỹ",r:"California",g:"Petite Sirah",v:"2021",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:24,n:"LINE 39 MERLOT 2022",c:"Mỹ",r:"California",g:"Merlot",v:"2022",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:25,n:"LINE 39 CABERNET SAUVIGNON 2021",c:"Mỹ",r:"California",g:"Cabernet Sauvignon",v:"2021",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:26,n:"LINE 39 CHARDONNAY 2023",c:"Mỹ",r:"California",g:"Chardonnay",v:"2023",a:"13.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG MỸ"},{id:27,n:"IMPERIAL CABERNET SAUVIGNON 2022",c:"Úc",r:"South Australia",g:"Cabernet Sauvignon",v:"2022",a:"15.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},{id:28,n:"OZ STAMP SHIRAZ LIMITED EDITION",c:"Úc",r:"South Australia",g:"Shiraz",v:"",a:"16.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},{id:29,n:"ROWALLAN RED BLEND SOUTH AUSTRALIA",c:"Úc",r:"South Australia",g:"Red Blend",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},{id:30,n:"ROWALLAN SAUVIGNON BLANC SOUTH AUSTRALIA",c:"Úc",r:"South Australia",g:"Sauvignon Blanc",v:"",a:"13%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},{id:31,n:"SHEOAK LANE CABERNET SAUVIGNON",c:"Úc",r:"South Australia",g:"Cabernet Sauvignon",v:"",a:"14.9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},{id:32,n:"SHEOAK LANE SHIRAZ",c:"Úc",r:"South Australia",g:"Shiraz",v:"",a:"14.9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},{id:33,n:"SHEOAK LANE SHIRAZ CABERNET SAUVIGNON",c:"Úc",r:"South Australia",g:"Red Blend",v:"",a:"14.9%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},{id:34,n:"GOLDEN SERPENT SAUVIGNON BLANC",c:"Úc",r:"South Australia",g:"Sauvignon Blanc",v:"",a:"13%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},{id:35,n:"GOLDEN SERPENT RED BLEND",c:"Úc",r:"South Australia",g:"Red Blend",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG ÚC"},{id:36,n:"GIUSTINI AREALE PRIMITIVO DI MANDURIA DOC",c:"Ý",r:"Puglia",g:"Primitivo",v:"",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:37,n:"GIUSTINI QVID PRIMITIVO SALENTO 2022",c:"Ý",r:"Salento, Puglia",g:"Primitivo",v:"2022",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:38,n:"GIUSTINI CALURA APPASSIMENTO",c:"Ý",r:"Puglia",g:"Red Blend",v:"",a:"16.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:39,n:"GIUSTINI ILLUMINATO FIANO SALENTO IGP 2022",c:"Ý",r:"Salento, Puglia",g:"Fiano",v:"2022",a:"12%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:40,n:"MOCAVERO SIRE CHARDONNAY I.G.P.",c:"Ý",r:"Puglia",g:"Chardonnay",v:"",a:"12.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:41,n:"MOCAVERO SIRE PRIMITIVO SALENTO",c:"Ý",r:"Salento, Puglia",g:"Primitivo",v:"",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:42,n:"MOCAVERO SIRE NEGROAMARO",c:"Ý",r:"Salento, Puglia",g:"Negroamaro",v:"",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:43,n:"MOCAVERO ROSSO DELLE PADULE APPASSIMENTO IGP",c:"Ý",r:"Puglia",g:"Red Blend",v:"",a:"16.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:44,n:"MOCAVERO MONTEPETROSO D.O.P. PRIMITIVO DI MANDURIA",c:"Ý",r:"Manduria, Puglia",g:"Primitivo",v:"",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:45,n:"MOCAVERO TELA DI RAGNO SALENTO I.G.P.",c:"Ý",r:"Salento, Puglia",g:"Red Blend",v:"",a:"15.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:46,n:"RUOTA LIBERA ROSSO PUGLIA 2022",c:"Ý",r:"Puglia",g:"Red Blend",v:"2022",a:"14.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:47,n:"RUOTA LIBERA PRIMITIVO PUGLIA 2022",c:"Ý",r:"Puglia",g:"Red Blend",v:"2022",a:"15%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:48,n:"RUOTA LIBERA APPASSIMENTO PUGLIA 2022",c:"Ý",r:"Puglia",g:"Red Blend",v:"2022",a:"16.5%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:49,n:"LUCADIMORI ROSSO 14%",c:"Ý",r:"Puglia",g:"Red Blend",v:"",a:"14%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"},{id:50,n:"LUCADIMORI LIMITED EDITION",c:"Ý",r:"Puglia",g:"Negroamaro",v:"",a:"16%",pR:"Liên hệ",pW:"Liên hệ",cat:"VANG Ý"}];
+const DE={"Pháp":"Rượu vang Bordeaux với hương thơm trái cây đỏ chín, vani và gia vị. Tannin mềm mại, hậu vị dài thanh lịch đặc trưng vùng Bordeaux.","Romania":"Rượu vang Romania với giống nho địa phương Feteasca độc đáo từ vùng Dealu Mare, hài hòa trái cây tươi và tannin thanh lịch.","Mỹ":"Rượu vang California hiện đại — trái cây nổi bật, dễ uống, hương quả mọng và cherry đen, vị mượt mà phù hợp mọi dịp.","Úc":"Rượu vang South Australia đậm đà với Shiraz và Cabernet, hương quả mọng chín, socola và hồ tiêu đặc trưng.","Ý":"Rượu vang vùng Puglia với Primitivo và Negroamaro độc đáo. Đậm màu, giàu trái cây chín, phong cách Mediterranean.","Chile":"Rượu vang Chile chất lượng ổn định, hương trái cây tươi sáng."};
 const FL={"Pháp":"🇫🇷","Romania":"🇷🇴","Mỹ":"🇺🇸","Úc":"🇦🇺","Ý":"🇮🇹","Chile":"🇨🇱"};
 let KM="🎁 Mua 6 chai tặng 1 chai cùng loại\n🎉 Giảm 10% đơn từ 5 triệu\n📦 Free ship TP.HCM đơn từ 2 triệu\n💎 Tặng hộp quà khi mua từ 3 chai";
 let aC={r:'',w:''};
+const PH='<div class="fb"><svg viewBox="0 0 24 24" fill="rgba(139,26,44,.15)"><path d="M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z"/></svg><span>Daily Wine</span></div>';
 function gT(t){['r','w','d'].forEach(x=>{document.getElementById('v'+x).style.display='none';document.getElementById('tb-'+x).classList.remove('a');});document.getElementById('v'+t).style.display='block';document.getElementById('tb-'+t).classList.add('a');if(t==='d')document.getElementById('kg').value=KM;}
 function dL(){if(document.getElementById('pi').value==='Teotiepthi@1'){document.getElementById('lw').style.display='none';document.getElementById('wc').style.display='block';document.getElementById('wbg').style.display='block';rPs('w');rd('w');}else document.getElementById('pe').style.display='block';}
 function cats(){return[...new Set(P.map(p=>p.cat))];}
 function rPs(m){const el=document.getElementById('ps-'+m);el.innerHTML=['Tất cả',...cats()].map((c,i)=>`<span class="p${(!aC[m]&&i===0)||(c===aC[m])?' a':''}" onclick="sC('${i===0?'':c}','${m}')">${i===0?'🍷 Tất cả':c}</span>`).join('');}
 function sC(c,m){aC[m]=c;document.querySelectorAll('#ps-'+m+' .p').forEach(p=>p.classList.remove('a'));(document.querySelectorAll('#ps-'+m+' .p')[c?cats().indexOf(c)+1:0])?.classList.add('a');rd(m);}
 function gF(m){const q=(document.getElementById('s'+m)?.value||'').toLowerCase(),co=document.getElementById('f'+m)?.value||'';return P.filter(p=>(!q||p.n.toLowerCase().includes(q)||p.g.toLowerCase().includes(q))&&(!co||p.c===co)&&(!aC[m]||p.cat===aC[m]));}
-function iU(p){return'https://www.dailywine.vn/wp-content/uploads/'+p.n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')+'.jpg';}
-function rd(m){const l=gF(m),g=document.getElementById('gd-'+m),w=m==='w';if(!l.length){g.innerHTML='<div class="nr">Không tìm thấy sản phẩm 🍷</div>';return;}g.innerHTML=l.map(p=>`<div class="cd" id="c-${m}-${p.id}" onclick="sP(${p.id},'${m}')"><div class="ci"><img src="${iU(p)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="fb"><svg viewBox="0 0 24 24" fill="rgba(139,26,44,.15)"><path d="M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z"/></svg><span>Daily Wine</span></div><span class="cbg">${FL[p.c]||''} ${p.c}</span></div><div class="cn">${p.n}</div><div class="cg">🍇 ${p.g}</div><div class="ca">🍷 ${p.a}${p.v?' · 📅 '+p.v:''}</div><div class="cpr">${w?'Giá sỉ: '+p.pW:'Giá lẻ: '+p.pR}</div></div>`).join('');}
-function sP(id,m){const p=P.find(x=>x.id===id);if(!p)return;document.querySelectorAll('.cd').forEach(c=>c.classList.remove('sel'));document.getElementById('c-'+m+'-'+id)?.classList.add('sel');const w=m==='w',de=DE[p.c]||'Rượu vang chất lượng cao nhập khẩu chính hãng bởi Daily Wine Việt Nam.',dt=document.getElementById('dt-'+m);dt.className='dt sh';dt.innerHTML=`<div class="dtp"><div class="dim"><img src="${iU(p)}" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\'display:flex;flex-direction:column;align-items:center;gap:8px;color:#ccc;font-size:11px;padding:10px\'><svg width=48 height=48 viewBox=\'0 0 24 24\' fill=\'rgba(139,26,44,.12)\'><path d=\'M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z\'/></svg><span>Daily Wine</span></div>'"></div><div class="dii"><div class="dn">${p.n}</div><div class="ig"><div class="ii"><div class="il">🌍 Quốc gia</div><div class="iv">${FL[p.c]||''} ${p.c}</div></div><div class="ii"><div class="il">📍 Vùng trồng</div><div class="iv">${p.r}</div></div><div class="ii"><div class="il">🍇 Giống nho</div><div class="iv">${p.g}</div></div><div class="ii"><div class="il">📅 Niên vụ</div><div class="iv">${p.v||'—'}</div></div><div class="ii"><div class="il">🍷 ABV</div><div class="iv">${p.a}</div></div><div class="ii"><div class="il">📦 Danh mục</div><div class="iv">${p.cat}</div></div></div><div class="pb"><div class="pl">${w?'💼 Giá bán sỉ':'🛒 Giá bán lẻ'}</div><div class="pv">${w?p.pW:p.pR}</div></div><a class="wl" href="https://www.dailywine.vn/?s=${encodeURIComponent(p.n)}" target="_blank">🔗 Xem trên dailywine.vn</a></div></div><div class="db"><h4>Mô tả sản phẩm</h4><div class="dx">${de}</div></div><div class="kb"><div class="kh"><div class="kt">🎯 Chương Trình KM Tháng Này</div><button class="ke" onclick="tK('${m}')">✏️ Cập nhật</button></div><div id="kd-${m}" class="kc">${KM.replace(/\n/g,'<br>')}</div><textarea id="kt-${m}" class="kta"></textarea><button id="ks-${m}" class="ksv" onclick="sK('${m}')">💾 Lưu</button></div>`;dt.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function ci(p){const u=IM[p.id]?DR(IM[p.id]):null;return u?`<img src="${u}" loading="lazy" onerror="this.remove()">${PH}`:PH;}
+function rd(m){const l=gF(m),g=document.getElementById('gd-'+m),w=m==='w';if(!l.length){g.innerHTML='<div class="nr">Không tìm thấy 🍷</div>';return;}g.innerHTML=l.map(p=>`<div class="cd" id="c-${m}-${p.id}" onclick="sP(${p.id},'${m}')"><div class="ci">${ci(p)}<span class="cbg">${FL[p.c]||''} ${p.c}</span></div><div class="cn">${p.n}</div><div class="cg">🍇 ${p.g}</div><div class="ca">🍷 ${p.a}${p.v?' · 📅 '+p.v:''}</div><div class="cpr">${w?'Giá sỉ: '+p.pW:'Giá lẻ: '+p.pR}</div></div>`).join('');}
+function sP(id,m){const p=P.find(x=>x.id===id);if(!p)return;document.querySelectorAll('.cd').forEach(c=>c.classList.remove('sel'));document.getElementById('c-'+m+'-'+id)?.classList.add('sel');const w=m==='w',de=DE[p.c]||'Rượu vang chất lượng cao nhập khẩu chính hãng bởi Daily Wine.',dt=document.getElementById('dt-'+m);const imgId=IM[p.id],iu=imgId?DR(imgId):null;const dimH=iu?`<img src="${iu}" onerror="this.parentElement.innerHTML='<div class=\\'dph\\'><svg viewBox=\\'0 0 24 24\\' fill=\\'rgba(139,26,44,.12)\\'><path d=\\'M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z\\'/></svg><span>Daily Wine</span></div>'">`:'<div class="dph"><svg viewBox="0 0 24 24" fill="rgba(139,26,44,.12)"><path d="M12 2C8 2 6 6 6 9c0 3.7 2.5 6.8 5.5 7.9V20H9v2h6v-2h-2.5v-3.1C15.5 15.8 18 12.7 18 9c0-3-2-7-6-7z"/></svg><span>Daily Wine</span></div>';dt.className='dt sh';dt.innerHTML=`<div class="dtp"><div class="dim">${dimH}</div><div class="dii"><div class="dn">${p.n}</div><div class="ig"><div class="ii"><div class="il">🌍 Quốc gia</div><div class="iv">${FL[p.c]||''} ${p.c}</div></div><div class="ii"><div class="il">📍 Vùng trồng</div><div class="iv">${p.r}</div></div><div class="ii"><div class="il">🍇 Giống nho</div><div class="iv">${p.g}</div></div><div class="ii"><div class="il">📅 Niên vụ</div><div class="iv">${p.v||'—'}</div></div><div class="ii"><div class="il">🍷 ABV</div><div class="iv">${p.a}</div></div><div class="ii"><div class="il">📦 Danh mục</div><div class="iv">${p.cat}</div></div></div><div class="pb"><div class="pl">${w?'💼 Giá bán sỉ':'🛒 Giá bán lẻ'}</div><div class="pv">${w?p.pW:p.pR}</div></div><a class="wl" href="https://www.dailywine.vn/?s=${encodeURIComponent(p.n)}" target="_blank">🔗 Xem trên dailywine.vn</a></div></div><div class="db"><h4>Mô tả sản phẩm</h4><div class="dx">${de}</div></div><div class="kb"><div class="kh"><div class="kt">🎯 Chương Trình KM Tháng Này</div><button class="ke" onclick="tK('${m}')">✏️ Cập nhật</button></div><div id="kd-${m}" class="kc">${KM.replace(/\n/g,'<br>')}</div><textarea id="kt-${m}" class="kta"></textarea><button id="ks-${m}" class="ksv" onclick="sK('${m}')">💾 Lưu</button></div>`;dt.scrollIntoView({behavior:'smooth',block:'nearest'});}
 function tK(m){const t=document.getElementById('kt-'+m),s=document.getElementById('ks-'+m),d=document.getElementById('kd-'+m),sh=t.style.display!=='block';t.style.display=sh?'block':'none';s.style.display=sh?'block':'none';d.style.display=sh?'none':'block';if(sh)t.value=KM;}
 function sK(m){KM=document.getElementById('kt-'+m).value;document.getElementById('kd-'+m).innerHTML=KM.replace(/\n/g,'<br>');document.getElementById('kt-'+m).style.display='none';document.getElementById('ks-'+m).style.display='none';document.getElementById('kd-'+m).style.display='block';}
 function sKG(){KM=document.getElementById('kg').value;const t=document.getElementById('tst');t.style.display='inline';setTimeout(()=>t.style.display='none',2500);}
