@@ -1,2 +1,3 @@
 # dailywine-baog-a
-Daily Wine — Tool Báo Giá Sản Phẩm
+
+Nội dung bảng báo giá Daily Wine đã được gỡ bỏ theo yêu cầu.
