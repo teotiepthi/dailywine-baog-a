@@ -45,3 +45,8 @@ GitHub để review qua PR** → tạo Routine (`create_trigger` / `create_sessi
 - Quota Max là chung cho cả hai đường — không đường nào "rẻ" hơn đường nào.
 - Việc code trên máy Mac của a.Tèo (file cục bộ, không nằm trong repo GitHub)
   chỉ có thể làm trực tiếp trong phiên Channels — Routine không với tới được.
+- **Remote điện thoại:** khi a.Tèo mở app Claude Code trên điện thoại lên, phiên
+  đó tự động kết nối để remote-control ngay điện thoại đó — không cần thao tác
+  gì thêm. Ngược lại, một phiên khác chỉ nhắn tin cross-session được tới phiên
+  điện thoại khi phiên đó đang mở/kết nối; nếu app đang đóng, phiên đó không
+  "reachable" (không hiện trong danh sách agent) và không nhắn được.
